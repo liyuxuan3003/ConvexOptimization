@@ -1,0 +1,3 @@
+[submodule "Minimus"]
+	path = Notebook/minimus
+	url = git@Lithium:LaTeX/Minimus.git
