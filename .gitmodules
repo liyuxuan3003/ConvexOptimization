@@ -1,0 +1,8 @@
+[submodule "NotebookNeon"]
+	path = Notebook/notebook-neon
+	url = git@Lithium:LaTeX/NotebookNeon.git
+	branch = dev
+[submodule "Minimus"]
+	path = Notebook/minimus
+	url = git@Lithium:LaTeX/Minimus.git
+	branch = dev
