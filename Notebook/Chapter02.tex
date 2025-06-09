@@ -1,0 +1,50 @@
+\chapter{数学公式}
+
+\section{physiccs}
+
+测试括号
+\begin{equation}
+    \qty(\frac{1}{2})\qquad
+    \qty[\frac{1}{2}]\qquad
+    \qty{\frac{1}{2}}\qquad
+    \sin(\frac{1}{2})
+\end{equation}
+
+测试导数
+\begin{equation}
+    \dv{y}{x}\qquad
+    \dv[2]{y}{x}\qquad
+    f(x)\dd{x}
+\end{equation}
+
+\section{siunitx}
+
+\subsection{单一测试}
+$\qnum{1e17}{\per\cm\cubed}$
+
+$\qnum[print-zero-exponent=true]{1e0}{\kohm}$
+
+$\qnum{1}{\kohm}$
+
+$\qnum{-273.15}{\degreeCelsius}$
+
+$\qnum{30000.12345}{\V\A}$
+
+\subsection{范围测试}
+$\qnumrange{3.2e2}{5.3e3}{\mm}$
+
+\subsection{列表测试}
+$\qnumlist{1e-6;1e-7;1e-8;1e-9}{\fF}$
+
+$\qnumlist{2.0;2.5;3.0;3.5}{\V}$
+
+$\qnumlist{-0.5;-0.82}{\mA}$
+
+\subsection{乘法测试}
+$\qnumproduct{0.5x0.7x0.3}{\um}$
+
+\subsection{和汉字的间距}
+
+这个\qnumrange{3.2e0}{5.3e3}{\mm}是什么？
+
+这个$\qnumrange{3.2e0}{5.3e3}{\mm}$是什么？
