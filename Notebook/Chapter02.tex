@@ -17,6 +17,13 @@
     f(x)\dd{x}
 \end{equation}
 
+测试向量
+\begin{equation}
+    \vb{a},\vb{b},\vb{c}\qquad
+    \vb*{a},\vb*{b},\vb*{c}\qquad
+    \vb*{\alpha},\vb*{\beta},\vb*{\gamma}
+\end{equation}
+
 \section{siunitx}
 
 \subsection{单一测试}
@@ -48,3 +55,82 @@ $\qnumproduct{0.5x0.7x0.3}{\um}$
 这个\qnumrange{3.2e0}{5.3e3}{\mm}是什么？
 
 这个$\qnumrange{3.2e0}{5.3e3}{\mm}$是什么？
+
+\qnum{3.3}{\V\A}
+
+$\qnum{3.3}{\V\A}$
+
+\section{长公式测试}
+\begin{equation}
+    \makebox[10pt]{\text{SOME VERY VERY LONG AND LARGE EQUATION ALPHA BETA GA}}
+\end{equation}
+
+\begin{equation}
+    \text{SOME VERY VERY LONG AND LARGE EQUATION ALPHA BETA GA}
+\end{equation}
+
+\section{自定义命令}
+
+
+测试$\e,\i,\j,\k$
+\begin{equation}
+    \e^{\i\pi}=1\qquad
+    Z=R+\j X
+\end{equation}
+\begin{equation}
+    q=q_r+q_i\i+q_j\j+q_k\k
+\end{equation}
+
+测试向量$\vi,\vj,\vk$
+\begin{equation}
+    \vb{r}=x\vi+y\vj+z\vk
+\end{equation}
+
+测试微分$\dx,\dy,\dz$
+\begin{equation}
+    f(x,y,z)\dx\dy\dz
+\end{equation}
+
+测试巨算符
+\begin{equation}
+    \Sum[a][b] \Prod[a][b] \BigCup[a][b] \BigCap[a][b] \Lim[a][b]
+    \Int[a][b] \Idnt[S] \Itnt[V]
+\end{equation}
+
+\begin{equation}
+    \Ilnt[L] \Ilot[L] \Isnt[S] \Isot[S] 
+\end{equation}
+
+测试数集
+\begin{equation}
+    \N\quad
+    \Z\quad
+    \Q\quad
+    \R\quad
+    \C\quad
+    \emptyset
+\end{equation}
+
+测试特殊函数
+\begin{equation}
+    \Gamma\quad
+    \Beta\quad
+    \PolyGamma\quad
+    \BesselJ\quad
+    \BesselN\quad
+    \BesselH\quad
+    \BesselI\quad
+    \BesselK\quad
+    \LegendreP\quad
+    \LegendreQ\quad
+    \SphericalY\quad
+    \HermiteH\quad
+    \FermiF
+\end{equation}
+
+
+% 测试工程函数
+% \begin{equation}
+%     \sgn
+% \end{equation}
+
