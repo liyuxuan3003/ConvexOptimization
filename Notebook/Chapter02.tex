@@ -101,6 +101,41 @@ $\qnum{3.3}{\V\A}$
     \emptyset
 \end{equation}
 
+测试文字的矢量算符
+\begin{equation}
+    \Grad\quad
+    \Div\quad
+    \Curl
+\end{equation}
+
+测试方差和协方差
+\begin{equation}
+    \Var\quad
+    \Cov
+\end{equation}
+
+测试反双曲函数
+\begin{equation}
+    \arsinh\quad
+    \arcosh\quad
+    \artanh\quad
+    \arcoth\quad
+    \arsech\quad
+    \arcsch
+\end{equation}
+
+测试差分量
+\begin{equation}
+    \delt x\quad
+    \detv{y}{x}
+\end{equation}
+
+测试零正负
+\begin{equation}
+    \zp\quad
+    \zm
+\end{equation}
+
 测试特殊函数
 \begin{equation}
     \Gamma\quad
@@ -115,7 +150,17 @@ $\qnum{3.3}{\V\A}$
     \LegendreQ\quad
     \SphericalY\quad
     \HermiteH\quad
-    \FermiF
+    \FermiF\quad
+    A\hodge
+\end{equation}
+
+测试工程函数
+\begin{equation}
+    \sgn\quad
+    \rect\quad
+    \sinc\quad
+    \erfc\quad
+    \dirac
 \end{equation}
 
 测试积分变换
@@ -127,6 +172,42 @@ $\qnum{3.3}{\V\A}$
     \LT{x(t)}\quad
     \LT*{\hat{x}(\omega)}\quad
     \LT*{\frac{1}{2}}
+\end{equation}
+
+测试物理量
+\begin{equation}
+    \kB\quad
+    \Emf
+\end{equation}
+
+测试重音符号
+\begin{equation}
+    \xpar{ABC}\quad
+    \xhat{ABC}\quad
+    \xwav{ABC}\quad
+    \xvec{ABC}\quad
+    \xbar{ABC}\quad
+    \bar{b}\quad
+    \bbar{b}
+\end{equation}
+
+测试行内变行间：$\mal{\Sum[n=1][\infty]\frac{1}{n}}, \mal{\Int[a][b]}$
+
+测试行间变行内
+\begin{equation}
+    \mas{\Sum[n=1][\infty]\frac{1}{n}}\quad
+    \mas{\Int[a][b]}
+\end{equation}
+
+数学正体简写
+\begin{equation}
+    V_{\te{START}}
+\end{equation}
+
+尖括号
+\begin{equation}
+    \<123>\quad
+    \<\frac{1}{2}>
 \end{equation}
 
 \section{自定义环境}
@@ -166,13 +247,25 @@ Split测试（更大间距）
     &+61434567890\cos(4x)+2876567890987\cos(5x)
 \end{Split}
 
-\subsection{Multline}
-Multline测试（短公式）
-\begin{Multline}[Multline1]
-    f(x)=45\cos(x)+2354\cos(2x)+56765\cos(3x)\\
-    +680\cos(4x)+2097\cos(5x)
-\end{Multline}
+Split测试（强制零宽居中）
+\begin{Split}[Split3]!
+    f(x)&=9876876545\cos(x)+23456787654\cos(2x)+5678908765\cos(3x)\\
+    &+61434567890\cos(4x)+2876567890987\cos(5x)
+\end{Split}
 
+Split测试（强制行宽居中）
+\begin{Split}[Split4]!!
+    f(x)&=9876876545\cos(x)+23456787654\cos(2x)+5678908765\cos(3x)\\
+    &+61434567890\cos(4x)+2876567890987\cos(5x)
+\end{Split}
+
+Split测试（无编号）
+\begin{Split}*
+    f(x)&=9876876545\cos(x)+23456787654\cos(2x)+5678908765\cos(3x)\\
+    &+61434567890\cos(4x)+2876567890987\cos(5x)
+\end{Split}
+
+\subsection{Multline}
 Multline测试（默认）
 \begin{Multline}[Multline1]
     f(x)=9876876545\cos(x)+23456787654\cos(2x)+5678908765\cos(3x)\\
@@ -180,15 +273,61 @@ Multline测试（默认）
 \end{Multline}
 
 Multline测试（更大间距）
-\begin{Multline}[Multline2]{4.0}
+\begin{Multline}[Multline2]{3.0}
     f(x)=9876876545\cos(x)+23456787654\cos(2x)+5678908765\cos(3x)\\
     +61434567890\cos(4x)+2876567890987\cos(5x)
 \end{Multline}
 
-Multline在使用更大间距时，和前序文字间会出现不应有的垂直空白。
+Multline测试（强制零宽居中）
+\begin{Multline}[Multline3]!
+    f(x)=9876876545\cos(x)+23456787654\cos(2x)+5678908765\cos(3x)\\
+    +61434567890\cos(4x)+2876567890987\cos(5x)
+\end{Multline}
+
+Multline测试（强制行宽居中）
+\begin{Multline}[Multline4]!!
+    f(x)=9876876545\cos(x)+23456787654\cos(2x)+5678908765\cos(3x)\\
+    +61434567890\cos(4x)+2876567890987\cos(5x)
+\end{Multline}
+
+Multline测试（短公式，不指定长度）
+\begin{Multline}[Multline5]
+    f(x)=45\cos(x)+2354\cos(2x)+56765\cos(3x)\\
+    +680\cos(4x)+2097\cos(5x)
+\end{Multline}
+
+Multline测试（短公式，指定长度）
+\begin{Multline}[Multline6]&{0.85}
+    f(x)=45\cos(x)+2354\cos(2x)+56765\cos(3x)\\
+    +680\cos(4x)+2097\cos(5x)
+\end{Multline}
+
+Multline测试（短公式，指定长度，强制零宽居中）
+\begin{Multline}[Multline7]&{0.85}!
+    f(x)=45\cos(x)+2354\cos(2x)+56765\cos(3x)\\
+    +680\cos(4x)+2097\cos(5x)
+\end{Multline}
+
+Multline测试（短公式，指定长度，强制行宽居中）
+\begin{Multline}[Multline8]&{0.85}!!
+    f(x)=45\cos(x)+2354\cos(2x)+56765\cos(3x)\\
+    +680\cos(4x)+2097\cos(5x)
+\end{Multline}
+
+Multline测试（短公式，指定长度，强制行宽居中，更大间距）
+\begin{Multline}[Multline8]{4.0}&{0.85}!!
+    f(x)=45\cos(x)+2354\cos(2x)+56765\cos(3x)\\
+    +680\cos(4x)+2097\cos(5x)
+\end{Multline}
+
+Multline测试（无编号）
+\begin{Multline}*
+    f(x)=45\cos(x)+2354\cos(2x)+56765\cos(3x)\\
+    +680\cos(4x)+2097\cos(5x)
+\end{Multline}
 
 \subsection{Align}
-Align测试（默认），\cref{eq:Align1a,eq:Align1c}
+Align测试（默认）
 \begin{Align}[Align1]
     f_1(x)&=234858498302\e^{x}+542340354548\e^{2x}+4234423493249\e^{3x}\id{a}\\
     f_2(x)&=4723584834\e^{x}+234278432784332484\e^{2x}+23439243942394239\e^{3x}\id{b}\\
@@ -202,13 +341,31 @@ Alignc测试（更大间距）
     f_3(x)&=824382359235952\e^{x}+5234924382358\e^{2x}+567867239\e^{3x}\id{c}
 \end{Align}
 
-% ------------------------------------------------------------------- %
+\subsection{Gather}
+Gather测试（默认）
+\begin{Gather}[Gather1]
+    f_1(x)=234858498302\e^{x}+542340354548\e^{2x}+4234423493249\e^{3x}\id{a}\\
+    f_2(x)=4723584834\e^{x}+234278432784332484\e^{2x}+23439243942394239\e^{3x}\id{b}\\
+    f_3(x)=824382359235952\e^{x}+5234924382358\e^{2x}+567867239\e^{3x}\id{c}
+\end{Gather}
 
-\newpage
+Gather测试（更大间距）
+\begin{Gather}[Gather2]{4.0}
+    f_1(x)=234858498302\e^{x}+542340354548\e^{2x}+4234423493249\e^{3x}\id{a}\\
+    f_2(x)=4723584834\e^{x}+234278432784332484\e^{2x}+23439243942394239\e^{3x}\id{b}\\
+    f_3(x)=824382359235952\e^{x}+5234924382358\e^{2x}+567867239\e^{3x}\id{c}
+\end{Gather}
+
+\section{公式引用}
+\cref{eq:Align1a}
+
+\cref{eq:Align1a,eq:Align1c}
+
+\cref{eq:Align1a,eq:Align1c,eq:Align2c}
+
+\cref{eq:Align1a,eq:Align1b,eq:Align1c}
 
 \section{长公式测试}
-
-\newpage
 
 \subsection{equation}
 文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本
@@ -230,8 +387,6 @@ Alignc测试（更大间距）
 \begin{equation}
     \hspace*{1cm}\int x^2\text{SOME VERY VERY LONG AND LARGE EQUATION ALPHA BETA}\hspace*{1cm}
 \end{equation}
-
-\newpage
 
 \subsection{split}
 
@@ -280,9 +435,6 @@ Alignc测试（更大间距）
         &+5678987656789x^{11}+678909876789x^{13}
     \end{aligned}}
 \end{equation}
-
-
-\newpage
 
 \subsection{multline}
 
@@ -346,10 +498,6 @@ Alignc测试（更大间距）
     \end{multlined}}
 \end{equation}
 
-% multiline需要一个额外的{}指定multline本身的占用宽度，不指定是自适应，指定要用#{}，这个#没有意义用来隔绝前面表示倍数的{}
-
-\newpage
-
 \subsection{align}
 
 文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本
@@ -368,9 +516,6 @@ Alignc测试（更大间距）
     f(x)&=205467890x^3+45678987654x^5+345678909876543x^7\\
     f(x)&=5678987656789x^{11}+678909876789x^{13}
 \end{align}}
-
-
-\newpage
 
 \subsection{gather}
 
