@@ -1,50 +1,41 @@
 \chapter{表格图像}
 
-\section{表格测试}
+\section{自定义表格环境}
 
 如\cref{tab:table短}所示
-\begin{Table}[Table短表格;table短]{colspec={XX[2,r]}}
-    中文&英文\\
-    测试&Test\\
+\begin{Table}[Table短表格;table短]
+    \begin{tblr}{colspec={XX[2,r]}}
+        中文&英文\\
+        测试&Test\\ 
+    \end{tblr}
 \end{Table}
 
 如\cref{tab:table长}所示
-\begin{Table}[Table长表格;table长]{colspec={XX[2,r]}}!!
-    中文&英文\\
-    测试&Test\\
-    测试&Test\\
-    测试&Test\\
-    测试&Test\\
-    测试&Test\\
-    测试&Test\\
-    测试&Test\\
-    测试&Test\\
-    测试&Test\\
-    测试&Test\\
-    测试&Test\\
-    测试&Test\\
-    测试&Test\\
-    测试&Test\\
-    测试&Test\\
-    测试&Test\\
+\begin{Table}[Table长表格;table长]!!
+    \begin{tblr}{colspec={XX[2,r]}}
+        中文&英文\\
+        测试&Test\\
+        测试&Test\\
+        测试&Test\\
+        测试&Test\\
+        测试&Test\\
+        测试&Test\\
+        测试&Test\\
+        测试&Test\\
+        测试&Test\\
+        测试&Test\\
+        测试&Test\\
+        测试&Test\\
+        测试&Test\\
+        测试&Test\\
+        测试&Test\\
+        测试&Test\\
+    \end{tblr}
 \end{Table}
 
 \cref{tab:table短,tab:table长}
 
-\section{图像测试}
-
-\cref{fig:123}
-\begin{figure}[H]
-    \centering
-    111
-    \caption{123}
-    \label{fig:123}
-\end{figure}
-
-
-\newpage
-
-\section{关于tabularray的全面测试}
+\section{表格测试}
 
 \begin{table}[H]
     \centering
@@ -123,3 +114,32 @@
     A&Alpha&\alpha&阿尔法，第一个字母\\
     B&Beta&\beta&贝塔，第二个字母\\
 \end{longtblr}
+
+\section{图像测试}
+
+\cref{fig:123}
+\begin{figure}[H]
+    \centering
+    111
+    \caption{123}
+    \label{fig:123}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics{TextA.fig.pdf}
+    \caption{图像测试1}
+\end{figure}
+
+\cref{fig:AAAA}
+
+\begin{figure}[H]
+    \centering
+    \setlength{\parskip}{6pt}
+    \subcaptionbox{字母A\label{fig:AAAA}}[0.45\linewidth]{\includegraphics[scale=1.5]{TextA.fig.pdf}}
+    \subcaptionbox{字母B\label{fig:BBBB}}[0.45\linewidth]{\includegraphics[scale=1.5]{TextB.fig.pdf}}
+
+    \subcaptionbox{字母A}[0.45\linewidth]{\includegraphics[scale=1.5]{TextA.fig.pdf}}
+    \subcaptionbox{字母B}[0.45\linewidth]{\includegraphics[scale=1.5]{TextB.fig.pdf}}
+    \caption{图像测试2}
+\end{figure}
