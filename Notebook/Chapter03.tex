@@ -1,11 +1,125 @@
 \chapter{表格图像}
 
+\section{表格测试}
+
+如\cref{tab:table短}所示
+\begin{Table}[Table短表格;table短]{colspec={XX[2,r]}}
+    中文&英文\\
+    测试&Test\\
+\end{Table}
+
+如\cref{tab:table长}所示
+\begin{Table}[Table长表格;table长]{colspec={XX[2,r]}}!!
+    中文&英文\\
+    测试&Test\\
+    测试&Test\\
+    测试&Test\\
+    测试&Test\\
+    测试&Test\\
+    测试&Test\\
+    测试&Test\\
+    测试&Test\\
+    测试&Test\\
+    测试&Test\\
+    测试&Test\\
+    测试&Test\\
+    测试&Test\\
+    测试&Test\\
+    测试&Test\\
+    测试&Test\\
+\end{Table}
+
+\cref{tab:table短,tab:table长}
+
+\section{图像测试}
+
+\cref{fig:123}
+\begin{figure}[H]
+    \centering
+    111
+    \caption{123}
+    \label{fig:123}
+\end{figure}
+
+
+\newpage
+
 \section{关于tabularray的全面测试}
+
 \begin{table}[H]
     \centering
-    \begin{tblr}{hline{1,Z}={1.0pt},hline{2}={0.4pt},colspec={XXX[2]}}
-        英文字母&希腊字母&备注\\
-        A&Alpha&阿尔法，第一个字母\\
-        B&Beta&贝塔，第二个字母\\
+    \caption{短表格}\label{tab:短表格}
+    \begin{tblr}{hline{1,Z}={1.0pt},hline{2}={0.4pt},cells={font=\small},colspec={XXXX[2,l]},cell{2-Z}{3}={mode=math}}
+        英文字母&希腊字母&符号&{备注\\ 测试更长的文本}\\
+        A&Alpha&\alpha&阿尔法，第一个字母\\
+        B&Beta&\beta&贝塔，第二个字母\\
     \end{tblr}
 \end{table}
+
+\begin{longtblr}[caption={长表格},label={长表格}]{hline{1,Z}={1.0pt},hline{2}={0.4pt},cells={font=\small},colspec={XXXX[2,l]},cell{2-Z}{3}={mode=math},rowhead=1}
+    英文字母&希腊字母&符号&{备注\\ 测试更长的文本}\\
+    A&Alpha&\alpha&阿尔法，第一个字母\\
+    B&Beta&\beta&贝塔，第二个字母\\
+    A&Alpha&\alpha&阿尔法，第一个字母\\
+    B&Beta&\beta&贝塔，第二个字母\\
+    A&Alpha&\alpha&阿尔法，第一个字母\\
+    B&Beta&\beta&贝塔，第二个字母\\
+    A&Alpha&\alpha&阿尔法，第一个字母\\
+    B&Beta&\beta&贝塔，第二个字母\\
+    A&Alpha&\alpha&阿尔法，第一个字母\\
+    B&Beta&\beta&贝塔，第二个字母\\
+    A&Alpha&\alpha&阿尔法，第一个字母\\
+    B&Beta&\beta&贝塔，第二个字母\\
+    A&Alpha&\alpha&阿尔法，第一个字母\\
+    B&Beta&\beta&贝塔，第二个字母\\
+    A&Alpha&\alpha&阿尔法，第一个字母\\
+    B&Beta&\beta&贝塔，第二个字母\\
+    A&Alpha&\alpha&阿尔法，第一个字母\\
+    B&Beta&\beta&贝塔，第二个字母\\
+    A&Alpha&\alpha&阿尔法，第一个字母\\
+    B&Beta&\beta&贝塔，第二个字母\\
+    A&Alpha&\alpha&阿尔法，第一个字母\\
+    B&Beta&\beta&贝塔，第二个字母\\
+    A&Alpha&\alpha&阿尔法，第一个字母\\
+    B&Beta&\beta&贝塔，第二个字母\\
+    A&Alpha&\alpha&阿尔法，第一个字母\\
+    B&Beta&\beta&贝塔，第二个字母\\
+    A&Alpha&\alpha&阿尔法，第一个字母\\
+    B&Beta&\beta&贝塔，第二个字母\\
+    A&Alpha&\alpha&阿尔法，第一个字母\\
+    B&Beta&\beta&贝塔，第二个字母\\
+    A&Alpha&\alpha&阿尔法，第一个字母\\
+    B&Beta&\beta&贝塔，第二个字母\\
+    A&Alpha&\alpha&阿尔法，第一个字母\\
+    B&Beta&\beta&贝塔，第二个字母\\
+    A&Alpha&\alpha&阿尔法，第一个字母\\
+    B&Beta&\beta&贝塔，第二个字母\\
+    A&Alpha&\alpha&阿尔法，第一个字母\\
+    B&Beta&\beta&贝塔，第二个字母\\
+    A&Alpha&\alpha&阿尔法，第一个字母\\
+    B&Beta&\beta&贝塔，第二个字母\\
+    A&Alpha&\alpha&阿尔法，第一个字母\\
+    B&Beta&\beta&贝塔，第二个字母\\
+    A&Alpha&\alpha&阿尔法，第一个字母\\
+    B&Beta&\beta&贝塔，第二个字母\\
+    A&Alpha&\alpha&阿尔法，第一个字母\\
+    B&Beta&\beta&贝塔，第二个字母\\
+    A&Alpha&\alpha&阿尔法，第一个字母\\
+    B&Beta&\beta&贝塔，第二个字母\\
+    A&Alpha&\alpha&阿尔法，第一个字母\\
+    B&Beta&\beta&贝塔，第二个字母\\
+    A&Alpha&\alpha&阿尔法，第一个字母\\
+    B&Beta&\beta&贝塔，第二个字母\\
+    A&Alpha&\alpha&阿尔法，第一个字母\\
+    B&Beta&\beta&贝塔，第二个字母\\
+    A&Alpha&\alpha&阿尔法，第一个字母\\
+    B&Beta&\beta&贝塔，第二个字母\\
+    A&Alpha&\alpha&阿尔法，第一个字母\\
+    B&Beta&\beta&贝塔，第二个字母\\
+    A&Alpha&\alpha&阿尔法，第一个字母\\
+    B&Beta&\beta&贝塔，第二个字母\\
+    A&Alpha&\alpha&阿尔法，第一个字母\\
+    B&Beta&\beta&贝塔，第二个字母\\
+    A&Alpha&\alpha&阿尔法，第一个字母\\
+    B&Beta&\beta&贝塔，第二个字母\\
+\end{longtblr}
