@@ -1,7 +1,6 @@
 \chapter{表格图像}
 
 \section{自定义表格环境}
-
 如\cref{tab:table短}所示
 \begin{Table}[Table短表格;table短]
     \begin{tblr}{colspec={XX[2,r]}}
@@ -33,13 +32,93 @@
     \end{tblr}
 \end{Table}
 
+\begin{Table}[复杂单元格测试]
+    \begin{tblr}
+    {
+        colspec={XXXXX[2,c]},
+        cells={valign=m},
+        cell{2-Z}{4}={mode=math},
+        cell{2}{1}={r=3}{valign=m},
+        cell{5}{1}={r=2}{valign=m},
+        cell{4}{2}={c=2}{halign=c},
+        hline{5,6}={\linethin},
+    }
+        部分&英文字母&希腊字母&符号&备注\\
+        第一部分&A&Alpha&\alpha&阿尔法，第一个字母\\
+        &B&Beta&\beta&贝塔，第一个字母\\
+        &Gamma&&\gamma&{伽马，第四个字母\\ 数学中常用于表示伽马函数\\ 代表阶乘的扩展}\\
+        第二部分&D&Delta&\delta&德塔，第五个字母\\
+        &E&Epsilon&\epsilon&埃普西隆，第五个字母\\
+    \end{tblr}
+\end{Table}
+
+\begin{Table}[包含图片的表格]
+    \begin{tblr}
+    {
+        colspec={X[c]X[c]},
+        hborder{2-Z}={belowspace+=6pt},
+        hline{2-Y}={\linethin},
+        vline{1,Z}={\linethick},
+        vline{2-Y}={\linethin},
+    }
+        变换前&变换后\\
+        \includegraphics{TextA.fig.pdf}&\includegraphics{TextB.fig.pdf}\\
+        \includegraphics{TextB.fig.pdf}&\includegraphics{TextA.fig.pdf}\\
+    \end{tblr}
+\end{Table}
+
+\cref{tab:table短}
+
 \cref{tab:table短,tab:table长}
+
+\cref{tab:table短,tab:table长,tab:复杂单元格测试,tab:包含图片的表格}
+
+\section{自定义图像环境}
+单图测试，如\cref{fig:figure单}所示
+\begin{Figure}[单图;figure单]
+    \includegraphics{TextA.fig.pdf}
+\end{Figure}
+
+单图测试（无标题）
+\begin{Figure}[;figure无标题]
+    \includegraphics{TextA.fig.pdf}
+\end{Figure}
+
+单图测试（无编号）
+\begin{Figure}*[单图]
+    \includegraphics{TextA.fig.pdf}
+\end{Figure}
+
+单图测试（无编号也无标题）
+\begin{Figure}*
+    \includegraphics{TextA.fig.pdf}
+\end{Figure}
+
+多图测试，\cref{fig:字母A1,fig:字母B1,fig:字母A2,fig:字母B2}
+\begin{Figure}[多图]
+    \figuresub[字母A1]{\includegraphics{TextA.fig.pdf}}{0.4}
+    \figuresub[字母B1]{\includegraphics{TextB.fig.pdf}}{0.4}
+
+    \figuresub[字母A2]{\includegraphics{TextA.fig.pdf}}
+    \figuresub[字母B2]{\includegraphics{TextB.fig.pdf}}
+
+    \figuresub*[子图仅标题]{\includegraphics{TextA.fig.pdf}}
+    \figuresub{\includegraphics{TextB.fig.pdf}}
+\end{Figure}
+
+\cref{fig:figure单}
+
+\cref{fig:figure单,fig:figure无标题}
+
+\cref{fig:figure单,fig:figure无标题,fig:多图}
+
+\cref{fig:figure单,fig:figure无标题,fig:多图,fig:字母A1}
 
 \section{表格测试}
 
 \begin{table}[H]
     \centering
-    \caption{短表格}\label{tab:短表格}
+    \caption{}\label{tab:短表格}
     \begin{tblr}{hline{1,Z}={1.0pt},hline{2}={0.4pt},cells={font=\small},colspec={XXXX[2,l]},cell{2-Z}{3}={mode=math}}
         英文字母&希腊字母&符号&{备注\\ 测试更长的文本}\\
         A&Alpha&\alpha&阿尔法，第一个字母\\
@@ -125,14 +204,66 @@
     \label{fig:123}
 \end{figure}
 
+文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本
+
+文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本
+
+文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本
 \begin{figure}[H]
     \centering
     \includegraphics{TextA.fig.pdf}
     \caption{图像测试1}
 \end{figure}
 
-\cref{fig:AAAA}
+文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本
+\begin{figure}[H]
+    \centering
+    \includegraphics[scale=1.1]{TextA.fig.pdf}
+    \caption*{图像测试2}
+\end{figure}
 
+文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本
+\begin{figure}[H]
+    \centering
+    \includegraphics[scale=1.1]{TextA.fig.pdf}
+    \caption{}
+\end{figure}
+
+文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本
+\begin{figure}[H]
+    \centering
+    \includegraphics[scale=1.1]{TextA.fig.pdf}
+    \caption*{}
+\end{figure}
+
+文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本
+\begin{figure}[H]
+    \centering
+    \includegraphics[scale=1.1]{TextA.fig.pdf}
+\end{figure}
+
+文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本
+\begin{figure}[H]
+    \centering
+    \makebox[0.45\linewidth]{\includegraphics[scale=1.1]{TextA.fig.pdf}}
+    % \subcaptionbox*{}{}
+\end{figure}
+
+文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本
+
+\newpage
+
+测试图像和注释的间距问题\cref{fig:AAAA,fig:BBBB}
+
+文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本
+
+文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本
+
+文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本
+
+文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本
+
+文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本\footnote{1}\footnote{2}
 \begin{figure}[H]
     \centering
     \setlength{\parskip}{6pt}
@@ -141,5 +272,8 @@
 
     \subcaptionbox{字母A}[0.45\linewidth]{\includegraphics[scale=1.5]{TextA.fig.pdf}}
     \subcaptionbox{字母B}[0.45\linewidth]{\includegraphics[scale=1.5]{TextB.fig.pdf}}
+
+    % \makebox[0.45\linewidth]{\includegraphics[scale=1.6]{TextA.fig.pdf}}
+    \subcaptionbox*{字母A}[0.45\linewidth]{\includegraphics[scale=1.6]{TextA.fig.pdf}}
     \caption{图像测试2}
 \end{figure}
