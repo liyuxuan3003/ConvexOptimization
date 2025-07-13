@@ -1,0 +1,25 @@
+\makeatletter\def\input@path{{minimus}}\makeatother
+\documentclass{standalone}
+
+\usepackage{minimus-tikz}
+
+\begin{document}
+\begin{tikzpicture}
+
+\path (0,0) coordinate (xL) 
+    ++ (1.5,0) coordinate (xC)
+    ++ (1,0) coordinate (xR) ;
+
+\path (0,0) coordinate (yB) 
+    ++ (0,6) coordinate (yA) ;
+
+\path ($(yB)!0.5!(yA)$) coordinate (yC) ;
+
+\draw (xC|-yB) node[tlground] (GND) {} to[Tnmos,name=M1] (xC|-yC) to[R=$R$] (xC|-yA) node[tlvdd] (VDD) {$V_{DD}$} ;
+
+\draw (xL|-M1.G) node[ocirc] (Cvin) {} node[left] (Tvin) {$v_{IN}$} -- (M1.G) ;
+
+\draw (xC|-yC) node[circ] (Cmid) {} -- (xR|-yC) node[ocirc] (Cvout) {} node[right] (Tvout) {$v_{OUT}$} ;  
+
+\end{tikzpicture}
+\end{document}

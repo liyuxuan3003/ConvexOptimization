@@ -1,0 +1,41 @@
+\makeatletter\def\input@path{{minimus}{notebook-neon}}\makeatother
+\documentclass{standalone}
+
+\usepackage{minimus-tikz}
+
+\begin{document}
+\begin{tikzpicture}
+    
+\draw (0,0) to[R=$R$,v=$v_R$,i=$i_R$] ++(0,3);
+\draw (2,0) to[C=$C$,v=$v_C$,i=$i_C$] ++(0,3);
+\draw (4,0) to[L=$L$,v=$v_L$,i=$i_L$] ++(0,3);
+\draw (6,0) to[D=$D$,v=$v_D$,i=$i_D$] ++(0,3);
+\draw (10,0) node[tlground] {} to[Tnmos,n=Ma1] ++(0,3) node[tlvdd] {};
+\draw (12,0) node[tlground] {} to[Tpmos,n=Ma2] ++(0,3) node[tlvdd] {};
+\path (Ma1) node[right] {$M_{a1}$};
+\path (Ma2) node[right] {$M_{a2}$};
+
+\draw (0,4) to[vsource,l=$v_S$] ++(0,3);
+\draw (2,4) to[isource,l=$i_S$] ++(0,3);
+\draw (4,4) to[cvsource,l=$v_S$] ++(0,3);
+\draw (6,4) to[cisource,l=$i_S$] ++(0,3);
+\draw (8,4) node[tlvss] {$V_{SS}$} to[battery,l=$v_S$] ++(0,3) node[tlvdd] {$V_{DD}$};
+
+\path (0,9) node[nmos] {$M_{b1}$};
+\path (2,9) node[pmos] {$M_{b2}$};
+\path (4,9) node[npn] {$M_{b3}$};
+\path (6,9) node[pnp] {$M_{b4}$};
+\path (8,9) node[hemt] {$M_{b5}$};
+
+\path (10,9) node[and port] (G1) {};
+\path (12,9) node[or port]  (G2) {};
+\path (14,9) node[not port] (G3) {};
+
+\path (G1.north) node[above] {$G_1$};
+\path (G2.north) node[above] {$G_2$};
+\path (G3.north) node[above] {$G_3$};
+
+\path (12,6) node[op amp] {$A_1$};
+
+\end{tikzpicture}
+\end{document}
