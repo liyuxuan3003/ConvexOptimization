@@ -1,0 +1,42 @@
+\makeatletter\def\input@path{{minimus}}\makeatother
+\documentclass{standalone}
+
+\usepackage{minimus-tikz}
+
+\begin{document}
+\begin{tikzpicture}
+
+\foreach \x in {1,2,...,8}
+{
+    \path (\x*3,0) coordinate (P\x) ; 
+}
+
+\path (P1) node[nmos,f++r+] (M1) {\fliprotate++{$M_1$}+} ;
+\path (P2) node[nmos,f-+r+] (M2) {\fliprotate-+{$M_2$}+} ;
+\path (P3) node[nmos,f+-r+] (M3) {\fliprotate+-{$M_3$}+} ;
+\path (P4) node[nmos,f--r+] (M4) {\fliprotate--{$M_4$}+} ;
+
+\path (P5) node[nmos,f++r-] (M5) {\fliprotate++{$M_5$}-} ;
+\path (P6) node[nmos,f-+r-] (M6) {\fliprotate-+{$M_6$}-} ;
+\path (P7) node[nmos,f+-r-] (M7) {\fliprotate+-{$M_7$}-} ;
+\path (P8) node[nmos,f--r-] (M8) {\fliprotate--{$M_8$}-} ;
+
+% \path (P1) node[nmos] (M1) {$M_1$} ;
+% \path (P2) node[nmos,xscale=-1] (M2) {\ctikzflipx{$M_2$}} ;
+% \path (P3) node[nmos,yscale=-1] (M3) {\ctikzflipy{$M_3$}} ;
+% \path (P4) node[nmos,xscale=-1,yscale=-1] (M4) {\ctikzflipxy{$M_4$}} ;
+
+% \path (P1) node[nmos] (M1) {$M_1$} ;
+% \path (P2) node[nmos,xscale=-1] (M2) {\ctikzflipx{$M_2$}} ;
+% \path (P3) node[nmos,yscale=-1] (M3) {\ctikzflipy{$M_3$}} ;
+% \path (P4) node[nmos,xscale=-1,yscale=-1] (M4) {\ctikzflipxy{$M_4$}} ;
+
+\foreach \x in {1,2,...,8}
+{
+    \path (M\x.G) node[fill=green] (M\x Gl) {\scalebox{0.8}{G}} ; 
+    \path (M\x.D) node[fill=red] (M\x Dl) {\scalebox{0.8}{D}} ; 
+    \path (M\x.S) node[fill=blue] (M\x Sl) {\scalebox{0.8}{S}} ; 
+}
+
+\end{tikzpicture}
+\end{document}

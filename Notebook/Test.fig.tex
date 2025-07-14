@@ -21,5 +21,7 @@
 
 \draw (xC|-yC) node[circ] (Cmid) {} -- (xR|-yC) node[ocirc] (Cvout) {} node[right] (Tvout) {$v_{OUT}$} ;  
 
+\draw[ultra thin] ($(Tvin.west|-GND.south)+(-0.2,-0.3)$) rectangle ($(Tvout.east|-VDD.north)+(0.2,0.7)$) ;
+
 \end{tikzpicture}
 \end{document}
