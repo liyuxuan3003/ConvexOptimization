@@ -37,8 +37,6 @@
 \theboxdefinition
 
 \section{自定义环境测试}
-测试文本
-
 测试文本\ref{def:定积分}
 \begin{BoxDefinition}[定积分]
     123    
@@ -95,6 +93,46 @@
 
 \begin{BoxExample}[例子测试]
     \cref{exp:例子测试}
-
-    测试文本
 \end{BoxExample}
+
+\begin{BoxDesignPrinciple}[设计原则测试]
+    \cref{despri:设计原则测试}
+\end{BoxDesignPrinciple}
+
+\begin{JPSentence}
+{
+    测试
+}
+    测试
+\end{JPSentence}
+
+\begin{JPConversation}
+{
+    测试
+}
+    测试
+\end{JPConversation}
+
+\section{证明与解测试}
+测试文本
+\begin{Proof}[\cref{def:定义测试}]
+    我有一个很巧妙的证明，
+
+    但这里空白太小写不下。
+\end{Proof}
+
+测试文本
+\begin{BoxExample}[需要求解的例子]
+    123
+\end{BoxExample}
+
+\begin{Solution}[\cref{exp:需要求解的例子}]
+    我有一个很巧妙的证明，
+
+    但这里空白太小写不下。
+\end{Solution}
+
+123
+\begin{Equation}
+    4567898765432345678909876543456789876545678987654
+\end{Equation}
