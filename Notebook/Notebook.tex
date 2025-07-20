@@ -9,6 +9,7 @@
 \usepackage{minimus-code}
 \usepackage{minimus-colorbox}
 \usepackage{minimus-reference}
+\usepackage{minimus-bibtex}
 
 \graphicspath{{build}{figure}}
 
@@ -30,6 +31,8 @@
 
 \mainmatter
 
+\nocite{*}
+
 \part{笔记模板测试}
 
 \input{Chapter01.tex}
@@ -43,5 +46,7 @@
 \input{Appendix.tex}
 
 \backmatter
+
+\bibliography{Reference.bib}
 
 \end{document}
