@@ -1,4 +1,17 @@
+\makeatletter\def\input@path{{minimus}{notebook-neon}}\makeatother
+
 \documentclass{notebook-neon}
+
+\usepackage{minimus-section}
+\usepackage{minimus-text}
+\usepackage{minimus-math}
+\usepackage{minimus-float}
+\usepackage{minimus-code}
+\usepackage{minimus-colorbox}
+\usepackage{minimus-reference}
+\usepackage{minimus-bibtex}
+
+\graphicspath{{build}{image}}
 
 \title{笔记模板}
 \author{李宇轩}
@@ -8,20 +21,24 @@
 \maketitle
 
 \frontmatter
-% \makesymb
+
+\makesymb
 
 \tableofcontents
 \listoffigures
 \listoftables
+\lstlistoflistings
 
 \mainmatter
 
-\part{笔记模板测试}
+\nocite{*}
 
 \input{Chapter01.tex}
 
 \appendix
 
 \backmatter
+
+\bibliography{Reference.bib}
 
 \end{document}

@@ -6,3 +6,7 @@
 	path = Notebook/minimus
 	url = git@Lithium:LaTeX/Minimus.git
 	branch = master
+[submodule "StandaloneSilicon"]
+	path = Notebook/standalone-silicon
+	url = git@Lithium:LaTeX/StandaloneSilicon.git
+	branch = master
