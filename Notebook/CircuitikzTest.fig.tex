@@ -2,6 +2,8 @@
 
 \documentclass{standalone}
 
+\usepackage{minimus-text}
+\usepackage{minimus-math}
 \usepackage{minimus-tikz}
 
 \begin{document}
@@ -22,6 +24,7 @@
 \draw (6,4) to[cisource,l=$i_S$] ++(0,3);
 \draw (8,4) node[tlvss] {$V_{SS}$} to[battery,l=$v_S$] ++(0,3) node[tlvdd] {$V_{DD}$};
 
+\draw (-3,9) node[transformer] (M) {$M$}; 
 \path (0,9) node[nmos] {$M_{b1}$};
 \path (2,9) node[pmos] {$M_{b2}$};
 \path (4,9) node[npn] {$M_{b3}$};
