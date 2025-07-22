@@ -10,3 +10,7 @@
 	path = Notebook/standalone-silicon
 	url = git@Lithium:LaTeX/StandaloneSilicon.git
 	branch = dev
+[submodule "MakefileLaTeX"]
+	path = Notebook/makefile-latex
+	url = git@Lithium:LaTeX/MakefileLaTeX
+	branch = dev
