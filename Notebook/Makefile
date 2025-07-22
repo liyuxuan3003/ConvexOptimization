@@ -1,0 +1,5 @@
+include makefile-latex/makefile-latex.mk
+
+PROJECT=Notebook
+DEPS_MAIN_TEX=${STYS_MINIMUS} ${CLSS_NOTEBOOK_NEON}
+DEPS_FIGS_TEX=${STYS_MINIMUS} ${CLSS_STANDALONE_SILICON}
