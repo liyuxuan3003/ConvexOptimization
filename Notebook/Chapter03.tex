@@ -41,7 +41,8 @@
         cell{2}{1}={r=3}{valign=m},
         cell{5}{1}={r=2}{valign=m},
         cell{4}{2}={c=2}{halign=c},
-        hline{5,6}={\linethin},
+        hline{5}={\linemiddle},
+        hline{6}={\linesplit},
     }
         部分&英文字母&希腊字母&符号&备注\\
         第一部分&A&Alpha&\alpha&阿尔法，第一个字母\\
@@ -57,9 +58,9 @@
     {
         colspec={X[c]X[c]},
         hborder{2-Z}={belowspace+=6pt},
-        hline{2-Y}={\linethin},
-        vline{1,Z}={\linethick},
-        vline{2-Y}={\linethin},
+        hline{2-Y}={\linemiddle},
+        vline{1,Z}={\lineborder},
+        vline{2-Y}={\linemiddle},
     }
         变换前&变换后\\
         \includegraphics{TextA.fig.pdf}&\includegraphics{TextB.fig.pdf}\\
