@@ -14,3 +14,7 @@
 	path = Notebook/makefile-latex
 	url = git@Lithium:LaTeX/MakefileLaTeX
 	branch = master
+[submodule "PyJool"]
+	path = Notebook/pyjool
+	url = git@Lithium:LaTeX/PyJool.git
+	branch = master
