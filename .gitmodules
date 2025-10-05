@@ -12,7 +12,7 @@
 	branch = dev
 [submodule "MakefileLaTeX"]
 	path = Notebook/makefile-latex
-	url = git@Lithium:LaTeX/MakefileLaTeX
+	url = git@Lithium:LaTeX/MakefileLaTeX.git
 	branch = dev
 [submodule "PyJool"]
 	path = Notebook/pyjool
