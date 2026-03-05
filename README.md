@@ -1,3 +1,0 @@
-# NotebookNeonTemplate
-
-NotebookNeonTemplate是一个开箱即用的LaTeX笔记模板，基于自定义文档类NotebookNeon和自定义宏包Minimus，亦作为其测试环境。
