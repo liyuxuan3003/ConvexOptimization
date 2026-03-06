@@ -5,17 +5,17 @@
 仿射集的定义是过集合内任意两点的直线仍在集合内。
 
 \begin{BoxDefinition}[仿射集]
-    若集合$C\subseteq\R^n$满足对于任意$x_1,x_2\in C$，满足
+    若集合$C\subseteq\R^n$满足对于任意$\vb{x}_1,\vb{x}_2\in C$，满足
     \begin{Equation}[仿射集]
-        \theta x_1+(1-\theta)x_2\in C\qquad \theta\in\R
+        \theta \vb{x}_1+(1-\theta)\vb{x}_2\in C\qquad \theta\in\R
     \end{Equation}
     则称$C$是一个仿射集（Affine Set）。
 \end{BoxDefinition}
 
 \begin{BoxDefinition}[仿射组合]
-    定义$x_1,\cdots,x_k$的仿射组合（Affine Combination）为
+    定义$\vb{x}_1,\cdots,\vb{x}_k$的仿射组合（Affine Combination）为
     \begin{Equation}[仿射组合]
-        x=\theta_1x_1+\cdots\theta_kx_k\qquad \theta_1+\cdots+\theta_k=1
+        x=\theta_1\vb{x}_1+\cdots\theta_k\vb{x}_k\qquad \theta_1+\cdots+\theta_k=1
     \end{Equation}
 \end{BoxDefinition}
 
@@ -26,7 +26,7 @@
 \begin{BoxDefinition}[仿射包]
     定义集合$C\subseteq\R^n$的仿射包（Affine Hull）为
     \begin{Equation}[仿射包]
-        \aff C=\qty{\theta_1x_1+\cdots+\theta_kx_k\mid x_i\in C,\ \theta_1+\cdots+\theta_k=1}        
+        \aff C=\qty{\theta_1\vb{x}_1+\cdots+\theta_k\vb{x}_k\mid \vb{x}_i\in C,\ \theta_1+\cdots+\theta_k=1}        
     \end{Equation}
 \end{BoxDefinition}
 
@@ -39,9 +39,9 @@
 凸集的定义是过集合内任意两点的线端仍在集合内。
 
 \begin{BoxDefinition}[凸集]
-    若集合$C\subseteq\R^n$满足对于任意$x_1,x_2\in C$，满足
+    若集合$C\subseteq\R^n$满足对于任意$\vb{x}_1,\vb{x}_2\in C$，满足
     \begin{Equation}[凸集]
-        \theta x_1+(1-\theta)x_2\in C\qquad 0\leq\theta\leq 1
+        \theta \vb{x}_1+(1-\theta)\vb{x}_2\in C\qquad 0\leq\theta\leq 1
     \end{Equation}
     则称$C$是一个凸集（Convex Set）。
 \end{BoxDefinition}
@@ -49,16 +49,16 @@
 凸集的定义比仿射集更宽松，凸集仅要求集合对集合内任意两点构成的线段封闭，仿射集的要求则是直线。在$\R^2$上的凸集视觉上确实是“\textbf{凸}”的。试想，对于一个凸多边形，其内任意两点的连线确实仍在该多边形内部。但如果多边形有“\textbf{凹}”的地方，连线很容易画到外部。
 
 \begin{BoxDefinition}[凸组合]
-    定义$x_1,\cdots,x_k$的凸组合（Convex Combination）为
+    定义$\vb{x}_1,\cdots,\vb{x}_k$的凸组合（Convex Combination）为
     \begin{Equation}[凸组合]
-        x=\theta_1x_1+\cdots+\theta_kx_k\qquad \theta_1+\cdots+\theta_k=1,\ \theta_i\geq 0
+        x=\theta_1\vb{x}_1+\cdots+\theta_k\vb{x}_k\qquad \theta_1+\cdots+\theta_k=1,\ \theta_i\geq 0
     \end{Equation}
 \end{BoxDefinition}
 
 \begin{BoxDefinition}[凸包]
     定义集合$C\subseteq\R^n$的凸包（Convex Hull）为
     \begin{Equation}[凸包]
-        \aff C=\qty{\theta_1x_1+\cdots+\theta_kx_k\mid x_i\in C,\ \theta_1+\cdots+\theta_k=1,\ \theta_i\geq 0}        
+        \aff C=\qty{\theta_1\vb{x}_1+\cdots+\theta_k\vb{x}_k\mid \vb{x}_i\in C,\ \theta_1+\cdots+\theta_k=1,\ \theta_i\geq 0}        
     \end{Equation}
 \end{BoxDefinition}
 
@@ -69,9 +69,9 @@
 锥的定义是过集合内任意一点的射线仍在集合内。
 
 \begin{BoxDefinition}[锥]
-    若集合$C\subseteq\R^n$满足对于任意$x\in C$，满足
+    若集合$C\subseteq\R^n$满足对于任意$\vb{x}\in C$，满足
     \begin{Equation}[凸集]
-        \theta x\in C\qquad \theta\geq 0
+        \theta \vb{x}\in C\qquad \theta\geq 0
     \end{Equation}
     则称$C$是一个锥（Cone）。
 \end{BoxDefinition}
@@ -79,28 +79,28 @@
 凸锥是指同时满足凸集和锥的集合，简单来说，射线间的空隙要被线段完全填充。
 
 \begin{BoxDefinition}[凸锥]
-    若集合$C\subseteq\R^n$满足对于任意$x_1,x_2\in C$，满足
+    若集合$C\subseteq\R^n$满足对于任意$\vb{x}_1,\vb{x}_2\in C$，满足
     \begin{Equation}[凸集]
-        \theta x_1+(1-\theta)x_2\in C\qquad \theta_1,\theta_2\geq 0
+        \theta_1\vb{x}_1+\theta_2\vb{x}_2\in C\qquad \theta_1,\theta_2\geq 0
     \end{Equation}
     则称$C$是一个凸锥（Convex Cone）。
 \end{BoxDefinition}
 
 凸锥和锥的关系可以用一个有趣的笑话理解：你先想象一个蛋筒，你吃掉里面的冰淇淋之后这个蛋筒就由凸锥变成锥了。但问题是，其实这个蛋筒有无限长，而你一口冰淇淋也吃不到！
 
-凸集到凸锥，定义是收紧了的：凸集只要求对$0\leq\theta\leq 1$成立，凸锥要求对$\theta_1,\theta_2\geq 0$成立。
+凸集到凸锥，定义是收紧了的：凸集只要求对$0\leq\theta_1,\theta_2\leq 1$且$\theta_1+\theta_2=1$成立即可。
 
 \begin{BoxDefinition}[锥组合]
-    定义$x_1,\cdots,x_k$的锥组合（Conic Combination）为
+    定义$\vb{x}_1,\cdots,\vb{x}_k$的锥组合（Conic Combination）为
     \begin{Equation}[锥组合]
-        x=\theta_1x_1+\cdots+\theta_kx_k\qquad \theta_i\geq 0
+        x=\theta_1\vb{x}_1+\cdots+\theta_k\vb{x}_k\qquad \theta_i\geq 0
     \end{Equation}
 \end{BoxDefinition}
 
 \begin{BoxDefinition}[锥包]
     定义集合$C\subseteq\R^n$的锥包（Conic Hull）为
     \begin{Equation}[锥包]
-        \aff C=\qty{\theta_1x_1+\cdots+\theta_kx_k\mid x_i\in C,\ \theta_i\geq 0}        
+        \aff C=\qty{\theta_1\vb{x}_1+\cdots+\theta_k\vb{x}_k\mid \vb{x}_i\in C,\ \theta_i\geq 0}        
     \end{Equation}
 \end{BoxDefinition}
 
