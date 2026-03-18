@@ -1,0 +1,28 @@
+\makeatletter\def\input@path{{minimus}{standalone-silicon}}\makeatother
+
+\documentclass{standalone-silicon}
+
+\usepackage{minimus-text}
+\usepackage{minimus-math}
+\usepackage{minimus-tikz}
+
+\begin{document}
+\begin{tikzpicture}
+
+\draw[gray,very thin] (0,0) coordinate (A) -- ++ (150:4) coordinate (B) ;   
+
+\fill[black!10!white] (A) -- (B) -- ($(B)+(240:1)$) coordinate (Br)  -- ($(A)+(240:1)$) coordinate (Ar)  -- cycle ;
+
+\path ($(A)!0.5!(B)$) coordinate (C) ;
+
+\draw[-latex] (C) -- ++ (60:1) coordinate (VA) node[right] (LBVA) {$\vb{a}$} ;   
+\draw[-latex] (C) -- ++ (-30:1) coordinate (VX) node[above right] (LBVX) {$\vb{x}$} ;   
+
+\path ($(A)!0.2!(C)$) node[below,anchor=north east,gray] (LBEquation) {$\vb{a}^T\vb{x}\leq b$} ;
+
+\path ($(A)!0.8!(C)$) node[below,anchor=north east,gray] (LBText) {Halfspace} ;
+
+\draw[ultra thin] ($(Br|-Ar)+(-0.1,-0.1)$) rectangle ($(A|-B)+(0.2,0.2)$) ;
+
+\end{tikzpicture}
+\end{document}

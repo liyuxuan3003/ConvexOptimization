@@ -1,0 +1,56 @@
+\section{保凸运算}
+
+% 在这一节，我们将介绍四种重要的不改变集合凸性的计算，即保凸运算。
+
+\subsection{交集}
+
+\begin{BoxProperty}[交集的保凸性]
+    若$S_1,S_2,\cdots,S_k$是凸集，那么其交集也是凸的
+    \begin{Equation}[交集的保凸性]
+        S=S_1\cap S_2\cap\cdots\cap S_k
+    \end{Equation}
+\end{BoxProperty}
+
+\subsection{透视函数}
+
+\begin{BoxProperty}[透视函数的保凸性]
+    若$P:\R^{n+1}\to\R^n$是透视函数，即
+    \begin{Equation}[透视函数的保凸性]
+        P(x,t)=x/t,\quad \dom P=\qty{(x,t)\mid t>0}
+    \end{Equation}
+    那么凸集在$P$下的像$P(S), S\in\R^{n+1}$或原像$P(C), C\in\R^m$都仍然是凸集。
+\end{BoxProperty}
+
+简单来说，在三维情况下的透视函数就是$x'=x/z$和$y'=y/z$，和图形学的概念是一样的。
+
+\subsection{仿射函数}
+
+\begin{BoxProperty}[仿射函数的保凸性]
+    若$f:\R^n\to\R^m$是仿射函数，即对于$\vb{A}\in\R^{m\times n}, \vb{b}\in\R^m$
+    \begin{Equation}[仿射函数的保凸性]
+        f(x)=\vb{A}\vb{x}+\vb{b}
+    \end{Equation}
+    那么凸集在$f$下的像$f(S), S\in\R^n$或原像$f(C), C\in\R^m$都仍然是凸集。
+\end{BoxProperty}
+
+\subsection{投影函数}
+
+\begin{BoxProperty}[投影函数的保凸性]
+    若$f:\R^n\to\R^m$是投影函数，即对于$\vb{A}\in\R^{m\times n}, \vb{b}\in\R^m, \vb{c}\in\R^n, d\in\R$
+    \begin{Equation}[投影函数的保凸性]
+        f(x)=(\vb{A}\vb{x}+\vb{b})/(\vb{c}^T\vb{x}+d),\quad \dom f=\qty{x\mid \vb{c}^T\vb{x}+d}
+    \end{Equation}
+    那么凸集在$f$下的像$f(S), S\in\R^n$或原像$f(C), C\in\R^m$都仍然是凸集。
+\end{BoxProperty}
+
+投影函数（Projective Function）可以由透视函数（Perspective Function）得到，如果令
+\begin{Equation}[投影函数的基础表达式1]
+    g(\vb{x})=\mqty[\vb{A}\\ \vb{c}^T]\vb{x}+\mqty[b\\ d]
+\end{Equation}
+
+那么投影函数就可以表示为以下复合形式
+\begin{Equation}[投影函数的基础表达式2]
+    f=P\circ g  
+\end{Equation}
+
+由此可见，投影函数是透视函数的一般化。

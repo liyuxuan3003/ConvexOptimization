@@ -1,0 +1,22 @@
+\section{分离超平面与支撑超平面}
+
+\begin{BoxTheorem}[分离超平面定理]
+    若$C,D$是不交的非空凸集，那存在$\vb{a}\neq 0$和$b$，使得
+    \begin{Equation}[分离超平面]
+        \vb{a}^T\vb{x}\leq b,\ x\in C\qquad
+        \vb{a}^T\vb{x}\geq b,\ x\in D
+    \end{Equation}
+    其中$\qty{\vb{x}\mid\vb{a}^T\vb{x}=b}$称为$C,D$的分离超平面（Separating Hyperplane）。
+\end{BoxTheorem}
+
+任意两个不相交的凸集，都能找到一个超平面将其分开。
+
+\begin{BoxTheorem}[支撑超平面定理]
+    若$C$是凸集，那对于$C$的边界点$\vb{x}_0$，存在$\vb{a}\neq 0$和$b$
+    \begin{Equation}[支撑超平面]
+        \vb{a}^T\vb{x}\leq\vb{a}^T\vb{x}_0,\ \vb{x}\in C
+    \end{Equation}
+    其中$\qty{\vb{x}\mid\vb{a}^T\vb{x}=b}$称为$C$的支撑超平面（Supporting Hyperplane）。
+\end{BoxTheorem}
+
+任意一个凸集上的边界点，都能找到一个相切的超平面，使凸集完全其位于一侧。
