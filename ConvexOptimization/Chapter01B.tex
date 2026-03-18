@@ -105,6 +105,8 @@ $\vb{P}$的特征向量指向椭球轴的方向，$\vb{P}$的特征值的平方�
     \end{Equation}
 \end{BoxDefinition}
 
+当我们说一个矩阵是正定或半正定时，它至少是对称的。
+
 \begin{BoxDefinition}[正定]
     $\Symm^n_{++}$表示由对称正定（Positive Definite）的$n\times n$方阵构成的集合
     \begin{Equation}[正定]
@@ -128,3 +130,22 @@ $\vb{P}$的特征向量指向椭球轴的方向，$\vb{P}$的特征值的平方�
 \end{BoxDefinition}
 
 有趣的是，半正定集$\vb{S}^n_{+}$是一个凸锥，也称为半正定锥（Positive Semidefinite Cone）。
+
+请注意，这里的$\succ$和$\succeq$不能理解为逐元素比较！严格来说，这两个符号代表的是“向量不等性”或“矩阵不等性”，在向量下确实会退化到逐元素比较，但矩阵下必须用二次型来定义。
+
+不妨考虑这样一个例子，在$n=2$下的半正定条件是
+\begin{Equation}[半正定例子1]
+    \vb{X}=\mqty[
+        x & y \\
+        y & z \\
+    ]\in\Symm^2_{+}\quad\Longleftrightarrow\quad
+    x\geq 0,\ z\geq 0,\ xz\geq y^2
+\end{Equation}
+
+那么，下面这个矩阵是满足半正定条件的，尽管存在负元素
+\begin{Equation}[半正定例子2]
+    \vb{X}=\mqty[
+        2 & -1\\
+        -1 & 3\\
+    ] 
+\end{Equation}
