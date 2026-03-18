@@ -1,20 +1,20 @@
 [submodule "NotebookNeon"]
-	path = ConvexOptimization/notebook-neon
-	url = git@Lithium:LaTeX/NotebookNeon.git
+	path = MatrixComputations/notebook-neon
+	url = git@github.com:liyuxuan3003/NotebookNeon.git
 	branch = master
 [submodule "Minimus"]
-	path = ConvexOptimization/minimus
-	url = git@Lithium:LaTeX/Minimus.git
+	path = MatrixComputations/minimus
+	url = git@github.com:liyuxuan3003/Minimus.git
 	branch = master
 [submodule "StandaloneSilicon"]
-	path = ConvexOptimization/standalone-silicon
-	url = git@Lithium:LaTeX/StandaloneSilicon.git
+	path = MatrixComputations/standalone-silicon
+	url = git@github.com:liyuxuan3003/StandaloneSilicon.git
 	branch = master
 [submodule "MakefileLaTeX"]
-	path = ConvexOptimization/makefile-latex
-	url = git@Lithium:LaTeX/MakefileLaTeX.git
+	path = MatrixComputations/makefile-latex
+	url = git@github.com:liyuxuan3003/MakefileLaTeX.git
 	branch = master
 [submodule "PyJool"]
-	path = ConvexOptimization/pyjool
-	url = git@Lithium:LaTeX/PyJool.git
+	path = MatrixComputations/pyjool
+	url = git@github.com:liyuxuan3003/PyJool.git
 	branch = master
