@@ -1,0 +1,26 @@
+\makeatletter\def\input@path{{minimus}{standalone-silicon}}\makeatother
+
+\documentclass{standalone-silicon}
+
+\usepackage{minimus-text}
+\usepackage{minimus-math}
+\usepackage{minimus-tikz}
+
+\begin{document}
+\begin{tikzpicture}
+
+\def\func#1{0.4*#1*#1}
+
+\draw plot[domain=-2.5:3,samples=50] (\x,{\func{\x}}) ;
+\draw[ultra thick,dashed,red] plot[domain=-1.5:2.0,samples=50] (\x,{\func{\x}}) ;
+\path (0.0,\func{0.0}) coordinate (O) ;  
+\path (3.0,\func{3.0}) coordinate (T) ;  
+\path (0.7,\func{0.7}) node[above left,red,font=\bfseries] (LHS) {LHS} ;
+\draw[ultra thick,dashed,blue] (-1.5,\func{-1.5}) coordinate (A) -- node[above left,pos=0.6,font=\bfseries] (RHS) {RHS} (2.0,\func{2.0}) coordinate (B) ;
+\path (A) node[ocirc] (OCA) {} node[left] (X) {$(x,f(x))$} ;  
+\path (B) node[ocirc] (OCB) {} node[right] (Y) {$(y,f(y))$} ;  
+
+\draw[ultra thin] ($(X.west|-O)+(-0.2,-0.2)$) rectangle ($(Y.east|-T)+(0.2,0.2)$) ;
+
+\end{tikzpicture}
+\end{document}

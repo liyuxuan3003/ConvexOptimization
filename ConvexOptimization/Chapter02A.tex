@@ -1,2 +1,27 @@
 \section{凸函数的定义}
 
+\begin{BoxDefinition}[凸函数]
+    若一个函数$f:\R^n\to\R$，满足$\dom f$为凸集，且对于任意$\vb{x},\vb{y}\in\dom f$和$0\leq\theta\leq 1$
+    \begin{Equation}[凸函数]
+        f(\theta\vb{x}+(1-\theta)\vb{y})\leq\theta f(\vb{x})+(1-\theta)f(\vb{y})
+    \end{Equation}
+    那就称$f$是凸函数（Convex Function）。 若等号仅在$\theta=0,1$时成立，那就称$f$是严格凸函数（Strictly Convex Function）。若$-f$是凸，则称$f$为凹函数（Concave Function）。
+\end{BoxDefinition}
+
+如\cref{fig:凸函数的示意}所示，凸函数的定义可以概括为，在函数曲线上任意两点作一条线段，这两点间的线段一定要高于这两点间的曲线。严格凸相较于凸，其进一步要求曲线中不允许出现水平线段。
+
+\begin{Figure}[凸函数的示意]
+    \includegraphics[scale=0.9]{ConvexFunc.fig.pdf}
+\end{Figure}
+
+有一个性质可以将$f:\R^n\to\R$多元凸函数的证明转换为$g:\R\to\R$上一元凸函数的证明！
+
+\begin{BoxProperty}[凸函数的充要条件]
+    若一个函数$f:\R^n\to\R$是凸函数，当且仅当函数$g:\R\to\R$
+    \begin{Equation}[凸函数的充要条件]
+        g(t)=f(\vb{x}+t\vb{v}),\quad \dom g=\qty{t\mid \vb{x}+t\vb{v}\in\dom f}
+    \end{Equation}
+    对于任意$\vb{v}\in\R^n$都是凸函数。
+\end{BoxProperty}
+
+简而言之，多元函数为凸等价于在其定义域上的任意直线截出的一元函数都是凸的。
