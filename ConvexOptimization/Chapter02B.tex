@@ -1,1 +1,88 @@
 \section{一阶条件}
+
+\begin{BoxTheorem}[凸函数的一阶条件]
+    若一个一阶可导函数$f:\R^n\to\R$是凸函数，这等价于对于任意的$\vb{x},\vb{y}\in\dom f$
+    \begin{Equation}[凸函数的一阶条件]
+        f(\vb{y})\geq f(x)+\grad f(\vb{x})^T(\vb{y}-\vb{x})
+    \end{Equation}
+\end{BoxTheorem}
+
+\begin{Proof}[\cref{thm:凸函数的一阶条件}]
+    \subparagraph{证明$n=1$的充分性} 已知$f:\R\to\R$是凸函数，证明$f:\R\to\R$满足一阶条件。
+
+    由于$f$是凸函数，根据\cref{def:凸函数}，对于$0<t\leq 1$，有
+    \begin{Equation}[一阶充分性1]
+        f(ty+(1-t)x)\leq tf(y)+(1-t)f(x)
+    \end{Equation}
+
+    \cref{eq:一阶充分性1}稍做整理
+    \begin{Equation}[一阶充分性2]
+        f(x+t(y-x))\leq t f(y)+(1-t)f(x)
+    \end{Equation}
+
+    \cref{eq:一阶充分性2}移项，两边同除$t$
+    \begin{Equation}[一阶充分性3]
+        f(y)\geq f(x)+\frac{f(x+t(y-x))-f(x)}{t}
+    \end{Equation}
+
+    \cref{eq:一阶充分性3}两边取$t\to 0$的极限
+    \begin{Equation}[一阶充分性4]
+        f(y)\geq f(x)+\lim_{t\to 0}\frac{f(x+t(y-x))-f(x)}{t(y-x)}(y-x)
+    \end{Equation}
+    
+    \cref{eq:一阶充分性4}的极限复合导数的定义
+    \begin{Equation}[一阶充分性5]
+        f(y)\geq f(x)+f'(x)(y-x)
+    \end{Equation}
+
+    \subparagraph{证明$n=1$的必要性} 已知$f:\R\to\R$满足一阶条件，证明$f:\R\to\R$是凸函数。
+
+    由于$f$满足一阶条件，根据\cref{thm:凸函数的一阶条件}，不妨令$z=t x+(1-t)y$，同时有
+    \begin{Gather}[一阶必要性]
+        f(x)\geq f(z)+f'(z)(x-z)\id{1}\\
+        f(y)\geq f(z)+f'(z)(y-z)\id{2}
+    \end{Gather}
+
+    将\cref{eq:一阶必要性1}乘以$t$和\cref{eq:一阶必要性2}乘以$(1-t)$相加
+    \begin{Equation}[一阶必要性3]
+        t f(x)+(1-t)f(y)\geq f(z)+f'(z)(t x+(1-t)y-z)
+    \end{Equation}
+
+    在\cref{eq:一阶必要性3}中代入$z=t x+(1-t)y$，得到
+    \begin{Equation}[一阶必要性4]
+        t f(x)+(1-t)f(y)\geq f(t x+(1-t)y)
+    \end{Equation}
+
+    \subparagraph{推广到$n>1$的情形} 现在利用\cref{ppt:凸函数的充要条件}构造$g(t)$并容易求出$g'(t)$
+    \begin{Gather}[一阶推广]
+        g(t)=f(t\vb{y}+(1-t)\vb{x})\id{1}\\
+        g'(t)=\grad f(t\vb{y}+(1-t)\vb{x})^T(\vb{y}-\vb{x})\id{2}
+    \end{Gather}
+
+    对于充分性，已知$f$是凸函数，这相当于$g$满足一阶条件
+    \begin{Equation}[一阶推广3]
+        g(t_1)\geq g(t_2)+g'(t_2)(t_1-t_2)
+    \end{Equation}
+
+    在\cref{eq:一阶推广3}中代入$t_1=1$和$t_2=0$
+    \begin{Equation}[一阶推广4]
+        g(1)\geq g(0)+g'(0)
+    \end{Equation}
+    
+    在\cref{eq:一阶推广4}中代入\cref{eq:一阶推广1,eq:一阶推广2}
+    \begin{Equation}[一阶推广5]
+        f(t\vb{y}+(1-t)\vb{x})\leq tf(\vb{y})+(1-t)f(\vb{x})
+    \end{Equation}
+
+    对于必要性，已知$f$满足一阶条件，不妨选取$t_1\vb{y}+(1-t_1)\vb{x}$和$t_2\vb{y}+(1-t_2)\vb{x}$
+    \begin{Equation}[一阶推广6]!!
+        f(t_1\vb{y}+(1-t_1)\vb{x})=f(t_2\vb{y}+(1-t_2)\vb{x})+\grad f(t_2\vb{y}+(1-t_2)\vb{x})^T(\vb{y}-\vb{x})(t_1-t_2)
+    \end{Equation}
+
+    在\cref{eq:一阶推广6}中代入\cref{eq:一阶推广1,eq:一阶推广2}
+    \begin{Equation}[一阶推广7]
+        g(t_1)\geq g(t_2)+g'(t_2)(t_1-t_2)
+    \end{Equation}
+
+    至此，就完整证明了一阶条件的充要性。
+\end{Proof}
