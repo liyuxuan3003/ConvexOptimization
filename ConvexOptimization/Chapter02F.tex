@@ -1,0 +1,49 @@
+\section{凸函数上的保凸运算}
+
+\begin{BoxProperty}[非负加权和的保凸性]
+    若$f_1,f_2$为凸函数，那么其非负加权也是凸函数
+    \begin{Equation}[非负加权和的保凸性]
+        f=\alpha_1f_1+\alpha_2f_2,\ \alpha_1,\alpha_2\geq 0
+    \end{Equation}
+\end{BoxProperty}
+
+\begin{BoxProperty}[复合仿射函数的保凸性]
+    若$f:\R^n\to\R$是凸函数，那么其复合仿射函数后也是凸函数
+    \begin{Equation}[复合仿射函数的保凸性]
+        g(\vb{x})=f(\vb{A}\vb{x}+\vb{b})
+    \end{Equation}
+\end{BoxProperty}
+
+\begin{BoxProperty}[复合透视函数的保凸性]
+    若$f:\R^n\to\R$是凸函数，那么其复合透视函数后也是凸函数
+    \begin{Equation}[复合透视函数的保凸性]
+        g(\vb{x},t)=tf(\vb{x}/t)
+    \end{Equation}
+\end{BoxProperty}
+
+\begin{BoxProperty}[复合单调函数的保凸性]
+    若$g:\R^{n}\to\R$是凸函数，而$h:\R\to\R$是单调增的凸函数，则$h(g(\vb{x}))$是凸函数。
+
+    若$g:\R^{n}\to\R$是凹函数，而$h:\R\to\R$是单调减的凸函数，则$h(g(\vb{x}))$是凸函数。
+\end{BoxProperty}
+
+\begin{BoxProperty}[复合最大值的保凸性]
+    若$f_1,f_2$为凸函数，那么其最大值也是凸函数
+    \begin{Equation}[复合最大值的保凸性]
+        f=\max\qty{f_1,f_2}
+    \end{Equation}
+\end{BoxProperty}
+
+\begin{BoxProperty}[复合上确界的保凸性]
+    若$f(\vb{x},\vb{y})$对于任意取定的$\vb{y}\in A$是关于$\vb{x}$的凸函数，则其$y\in A$的上确界也是凸函数
+    \begin{Equation}[复合上确界的保凸性]
+        g(\vb{x})=\sup_{y\in A}f(\vb{x},\vb{y})
+    \end{Equation}
+\end{BoxProperty}
+
+\begin{BoxProperty}[复合下确界的保凸性]
+    若$f(\vb{x},\vb{y})$是关于$(\vb{x},\vb{y})$的凸函数，且$C$是凸集，则其$y\in C$的下确界也是凸函数
+    \begin{Equation}[复合下确界的保凸性]
+        g(\vb{x})=\inf_{y\in C}f(\vb{x},\vb{y})
+    \end{Equation}
+\end{BoxProperty}

@@ -1,0 +1,79 @@
+\section{二阶条件}
+
+\begin{BoxTheorem}[凸函数的二阶条件]
+    若一个二阶可导函数$f:\R^n\to\R$是凸函数，这等价于对于任意的$\vb{x}\in\dom f$
+    \begin{Equation}[凸函数的二阶条件]
+        \laplacian f(\vb{x})\succeq 0
+    \end{Equation}
+\end{BoxTheorem}
+
+\begin{Proof}[\cref{thm:凸函数的二阶条件}]
+    \subparagraph{证明$n=1$的充分性} 已知$f:\R\to\R$是凸函数，证明$f:\R\to\R$满足二阶条件。
+
+    由于$f$是凸函数，根据\cref{thm:凸函数的一阶条件}，可以有
+    \begin{Gather}[二阶充分性]
+        f(y)\geq f(x)+f'(x)(y-x)\id{1}\\
+        f(x)\geq f(y)+f'(y)(x-y)\id{2}
+    \end{Gather}
+
+    对\cref{eq:二阶充分性1,eq:二阶充分性2}分别移项可得
+    \begin{Gather}[二阶充分性]
+        f(y)-f(x)\geq f'(x)(y-x)\id{3}\\
+        f(y)-f(x)\leq f'(y)(y-x)\id{4}
+    \end{Gather}
+
+    根据\cref{eq:二阶充分性3,eq:二阶充分性3}可得
+    \begin{Equation}[二阶充分性5]
+        f'(x)(y-x)\leq f'(y)(y-x)
+    \end{Equation}
+
+    \cref{eq:二阶充分性5}两端同除$(y-x)^2$，移项得
+    \begin{Equation}[二阶充分性6]
+        \frac{f'(y)-f'(x)}{y-x}\geq 0
+    \end{Equation}
+
+    \cref{eq:二阶充分性6}两端取$y\to x$的极限
+    \begin{Equation}[二阶充分性7]
+        \Lim[y][x]\frac{f'(y)-f'(x)}{y-x}\geq 0
+    \end{Equation}
+
+    \cref{eq:二阶充分性7}的极限符合导数的定义
+    \begin{Equation}[二阶充分性8]
+        f''(x)\geq 0
+    \end{Equation}
+
+    \subparagraph{证明$n=1$的必要性} 已知$f:\R\to\R$满足二阶条件，证明$f:\R\to\R$是凸函数。
+
+    根据泰勒中值定理，存在一个$z$满足$x\leq z\leq y$，使得
+    \begin{Equation}[二阶必要性1]
+        f(y)=f(x)+f'(x)(1-x)+\frac{1}{2}f''(z)(y-x)^2
+    \end{Equation}
+
+    由于$f$满足二阶条件，故$f''(z)\geq 0$，因此由\cref{eq:二阶必要性1}即可给出$f$的一阶条件
+    \begin{Equation}[二阶必要性2]
+        f(y)\geq f(x)+f'(x)(1-x)
+    \end{Equation}
+
+    \subparagraph{推广到$n=1$的情况} 现在利用\cref{ppt:凸函数的充要条件}构造$g(t)$并容易求出$g'(t)$
+    \begin{Gather}[二阶推广]
+        g(t)=f(\vb{x}+t\vb{v})\id{1}\\
+        g''(t)=\vb{v}^T\laplacian f(\vb{x}+t\vb{v})\vb{v}\id{2}
+    \end{Gather}
+
+    若$f$为凸，当且仅当$g$为凸，当且仅当$g$满足二阶条件，即
+    \begin{Equation}[二阶推广3]
+        \vb{v}^T\laplacian f(\vb{x}+t\vb{v})\vb{v}\geq 0
+    \end{Equation}
+
+    由于$\vb{x},\vb{v}$都是任取的，这等价于
+    \begin{Equation}[二阶推广4]
+        \vb{v}^T\laplacian f(\vb{x})\vb{v}\geq 0
+    \end{Equation}
+
+    \cref{eq:二阶推广4}就是半正定条件
+    \begin{Equation}[二阶推广5]
+        \laplacian f(\vb{x})\succeq 0
+    \end{Equation}
+
+    至此，就完整证明了二阶条件的充要性。
+\end{Proof}
