@@ -1,1 +1,158 @@
 \section{凸函数的例子}
+
+\subsection{自变量为标量}
+
+\begin{BoxProperty}[仿射函数的凸性]
+    仿射函数，对于任意$a,b$是既凸又凹的
+    \begin{Equation}[仿射函数的凸性]
+        f(x)=ax+b,\ x\in\R
+    \end{Equation}
+\end{BoxProperty}
+
+\begin{BoxProperty}[幂函数的凸性]
+    幂函数，对于$a\geq 1$或$a\leq 0$是凸的，对于$0\leq a\leq 1$是凹的
+    \begin{Equation}[幂函数的凸性]
+        f(x)=x^a,\ x\in\R_{++}
+    \end{Equation}
+    绝对值幂函数，对于$p\geq 1$是凸的
+    \begin{Equation}[绝对值幂函数的凸性]
+        f(x)=\abs{x}^p,\ x\in\R
+    \end{Equation}
+\end{BoxProperty}
+
+\begin{BoxProperty}[指数函数的凸性]
+    指数函数，对于任意$\alpha$是凸的
+    \begin{Equation}[指数函数的凸性]
+        f(x)=\e^{\alpha x},\ x\in\R
+    \end{Equation}
+\end{BoxProperty}
+
+\begin{BoxProperty}[对数函数的凸性]
+    对数函数，是凹的
+    \begin{Equation}[对数函数的凸性]
+        f(x)=\log x,\ x\in\R_{++}
+    \end{Equation}
+\end{BoxProperty}
+
+\begin{BoxProperty}[负熵函数的凸性]
+    负熵函数，是凸的
+    \begin{Equation}[负熵函数的凸性]
+        f(x)=x\log x,\ x\in\R_{++}
+    \end{Equation}
+\end{BoxProperty}
+
+\begin{Proof}[\cref{ppt:负熵函数的凸性}]
+    对\cref{eq:负熵函数的凸性}求导
+    \begin{Equation}[负熵函数的凸性1]
+        f'(x)=\log x+1\qquad f''(x)=1/x
+    \end{Equation}
+
+    因此对于$x\in\R_{++}$恒有$f''(x)>0$，根据\cref{thm:凸函数的二阶条件}，$f$为凸函数。
+\end{Proof}
+
+\subsection{自变量为向量}
+
+\begin{BoxProperty}[向量仿射函数的凸性]
+    向量仿射函数，对于任意$\vb{a},\vb{b}$是凸的
+    \begin{Equation}[向量仿射函数的凸性]
+        f(\vb{x})=\vb{a}^T\vb{x}+\vb{b},\ x\in\R^n
+    \end{Equation}
+\end{BoxProperty}
+
+\begin{BoxProperty}[范数函数的凸性]
+    范数函数，是凸的
+    \begin{Equation}[范数函数的凸性]
+        f(\vb{x})=\norm{\vb{x}},\ x\in\R^n
+    \end{Equation}
+\end{BoxProperty}
+
+\begin{Proof}[\cref{ppt:范数函数的凸性}]
+    范数函数满足三角不等式$\norm{\vb{x}+\vb{y}}\leq\norm{\vb{x}}+\norm{\vb{y}}$
+    \begin{Split}[范数函数的凸性1]
+        f(\theta\vb{x}+(1-\theta)\vb{y})
+        &=\norm{\theta\vb{x}+(1-\theta)\vb{y}}\\
+        &\leq\theta\norm{\vb{x}}+(1-\theta)\norm{\vb{y}}\\
+        &=\theta f(\vb{x})+(1-\theta)f(\vb{y})
+    \end{Split}
+    根据\cref{def:凸函数}，这就证明了$f$是凸函数。
+\end{Proof}
+
+范数函数的一个特殊情况是最大值函数。
+
+\begin{BoxProperty}[最大值函数的凸性]
+    最大值函数，是凸的
+    \begin{Equation}[最大值函数的凸性]
+        f(x)=\max\qty{x_1,\cdots,x_n}
+    \end{Equation}
+\end{BoxProperty}
+
+% \begin{Proof}[\cref{ppt:最大值函数的凸性}]
+%     最大值就是无穷范数，而\cref{ppt:范数函数的凸性}已经证明了所有范数函数是凸的。
+% \end{Proof}
+
+\begin{BoxProperty}[二次比线性函数的凸性]
+    二次比线性函数，是凸的
+    \begin{Equation}[二次比线性函数的凸性]
+        f(x,y)=x^2/y,\ (x,y)\in\R\times\R_{++}
+    \end{Equation}
+\end{BoxProperty}
+
+\begin{Proof}[\cref{ppt:二次比线性函数的凸性}]
+    对\cref{eq:二次比线性函数的凸性}求二阶导，并且$\vb{v}\vb{v}^T$形式的矩阵一定是半正定的
+    \begin{Equation}[二次比线性函数的凸性1]
+        \laplacian f(x,y)=\frac{2}{y^3}\mqty[
+            y^2&-xy\\
+            -xy&x^2\\
+        ]=\frac{2}{y^3}\mqty[
+            y\\
+            -x\\
+        ]\mqty[
+            y\\
+            -x\\
+        ]^T\succeq 0
+    \end{Equation}
+
+    根据\cref{thm:凸函数的二阶条件}，这就证明了$f$是凸函数。
+\end{Proof}
+
+\begin{BoxProperty}[几何平均函数的凸性]
+    几何平均函数，是凹的
+    \begin{Equation}[几何平均函数的凸性]
+        f(\vb{x})=(x_1\cdots x_n)^{1/n},\ \vb{x}\in\R_{++}^n
+    \end{Equation}
+\end{BoxProperty}
+
+\begin{BoxProperty}[对数指数和函数的凸性]
+    对数指数和函数（Log-Sum-Exp），是凸的
+    \begin{Equation}[指数和的对数的凸性]
+        f(\vb{x})=\log(\e^{x_1}+\cdots+\e^{x_n}),\ \vb{x}\in\R^n
+    \end{Equation}
+\end{BoxProperty}
+
+\begin{BoxProperty}[对数行列式函数的凸性]
+    对数行列式函数（Log-Determinant），是凹的
+    \begin{Equation}[对数行列式函数的凸性]
+        f(\vb{X})=\log\det\vb{X},\ \vb{X}\in\Symm_{++}^n
+    \end{Equation} 
+\end{BoxProperty}
+
+\begin{Proof}[\cref{ppt:对数行列式函数的凸性}]
+    根据$\vb{X}=\vb{Z}+t\vb{V}$构造$g(t)$
+    \begin{Equation}[对数行列式函数的凸性1]
+        g(t)=\log\det(\vb{Z}+t\vb{V})
+    \end{Equation}
+    \cref{eq:对数行列式函数的凸性1}这相当于
+    \begin{Equation}[对数行列式函数的凸性2]
+        g(t)=\log\det(\vb{Z}^{1/2}(\vb{I}+t\vb{Z}^{-1/2}\vb{V}\vb{Z}^{-1/2})\vb{Z}^{1/2})
+    \end{Equation}
+    \cref{eq:对数行列式函数的凸性2}上应用行列式和对数的性质，其中$\lambda_i$是$\vb{Z}^{-1/2}\vb{V}\vb{Z}^{-1/2}$的特征值
+    \begin{Equation}[对数行列式函数的凸性3]
+        g(t)=\log\det\vb{Z}+\Sum[i=1][n]\log(1+t\lambda_i)
+    \end{Equation}
+    对\cref{eq:对数行列式函数的凸性3}求导得
+    \begin{Gather}[对数行列式函数的凸性]
+        g'(t)=\Sum[i=1][n]\frac{\lambda_i}{1+t\lambda_i}\\
+        g''(t)=-\Sum[i=1][n]\frac{\lambda_i^2}{(1+t\lambda_i)^2}
+    \end{Gather}
+    显然$g''(t)\leq 0$，根据\cref{thm:凸函数的二阶条件}，可以证明$f$是凹的。
+\end{Proof}
