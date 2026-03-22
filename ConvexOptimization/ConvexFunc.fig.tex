@@ -20,7 +20,10 @@
 \path (A) node[ocirc] (OCA) {} node[left] (X) {$(x,f(x))$} ;  
 \path (B) node[ocirc] (OCB) {} node[right] (Y) {$(y,f(y))$} ;  
 
-\draw[ultra thin] ($(X.west|-O)+(-0.2,-0.2)$) rectangle ($(Y.east|-T)+(0.2,0.2)$) ;
+\path (-3.4,-0.3) coordinate (SW) ; 
+\path (+4.0,4.1) coordinate (NE) ; 
+
+\draw[ultra thin] (SW) rectangle (NE) ;
 
 \end{tikzpicture}
 \end{document}

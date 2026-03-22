@@ -1,1 +1,20 @@
-\section{凸函数上的保凸运算}
+\section{凸函数的上图}
+
+简单来说，函数的上图，就是指函数曲线上方的区域！如\cref{fig:上图}所示。
+
+\begin{Figure}[上图]
+    \includegraphics[scale=0.9]{Epigraph.fig.pdf} 
+\end{Figure}
+
+\begin{BoxDefinition}[上图]
+    对于函数$f:\R^n\to\R$，定义其上图（Epigraph）为
+    \begin{Equation}[上图]
+        \epi f=\qty{(x,t)\mid x\in\dom f,\ t\geq f(x)}
+    \end{Equation}
+\end{BoxDefinition}
+
+对于一个$f:\R^n\to\R$的函数，其上图$\epi f\subseteq\R^{n+1}$，这是非常合理的，例如一元函数的绘制需要一个二维平面。而一个相当重要的结论是，函数是凸函数等价于函数的上图是凸集！
+
+\begin{BoxProperty}[凸函数的上图]
+    对于函数$f:\R^n\to\R$，$f$为凸函数等价于$\epi f$为凸集。
+\end{BoxProperty}
