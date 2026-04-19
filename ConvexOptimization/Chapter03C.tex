@@ -1,1 +1,204 @@
 \section{凸优化问题的分类}
+
+凸优化问题有四大类：线性规划LP，二次规划QP，二次锥规划SOCP，半正定规划SDP。
+
+这四类凸优化问题实际上是从特殊到一般的
+\begin{Equation}[凸优化问题的分类]
+    \text{LP}\subset\text{QP}\subset\text{SOCP}\subset\text{SDP}
+\end{Equation}
+
+然而，从求解的角度，越特殊的凸优化问题在求解上越有额外的优势。
+
+\subsection{线性规划（LP）}
+
+在线性规划中，目标函数是线性的，约束函数是仿射的。
+
+\begin{BoxDefinition}[线性规划]
+    线性规划（Linear Programing, LP）是指
+    \begin{Equation}[线性规划]
+        \begin{array}{ll}
+            \minimize   & \vb{c}^T\vb{x}+\vb{d} \\
+            \subto      & \vb{G}\vb{x}\preceq\vb{h} \\
+                        & \vb{A}\vb{x}=\vb{b}
+        \end{array}
+    \end{Equation}
+\end{BoxDefinition}
+
+许多凸优化问题看起来不是线性规划，但是可以转化为线性规划。
+
+\begin{BoxProperty}[$\ell_\infty$范数最小化;Linf范数最小化]
+    $\ell_\infty$范数最小化问题
+    \begin{Equation}[Linf范数最小化]
+        \begin{array}{ll}
+            \minimize   & \norm{\vb{x}}_{\infty} \\
+            \subto      & \vb{G}\vb{x}\preceq\vb{h} \\
+                        & \vb{A}\vb{x}=\vb{b}
+        \end{array}
+    \end{Equation}
+    等价于以下的线性规划
+    \begin{Equation}[Linf范数最小化的等价线性规划]
+        \begin{array}{ll}
+            \minimize   & t \\
+            \subto      & -t\vb{1}\preceq\vb{x}\preceq t\vb{1}\\
+                        & \vb{G}\vb{x}\preceq\vb{h} \\
+                        & \vb{A}\vb{x}=\vb{b}
+        \end{array}
+    \end{Equation}
+\end{BoxProperty}
+
+\begin{BoxProperty}[$\ell_1$范数最小化;L1范数最小化]
+    $\ell_1$范数最小化问题
+    \begin{Equation}[L1范数最小化]
+        \begin{array}{ll}
+            \minimize   & \norm{\vb{x}}_{1} \\
+            \subto      & \vb{G}\vb{x}\preceq\vb{h} \\
+                        & \vb{A}\vb{x}=\vb{b}
+        \end{array}
+    \end{Equation}
+    等价于以下的线性规划
+    \begin{Equation}[L1范数最小化的等价线性规划]
+        \begin{array}{ll}
+            \minimize   & \Sum t_i \\
+            \subto      & -t\vb{1}\preceq\vb{x}\preceq t\vb{1}\\
+                        & \vb{G}\vb{x}\preceq\vb{h} \\
+                        & \vb{A}\vb{x}=\vb{b}
+        \end{array}
+    \end{Equation}
+\end{BoxProperty}
+
+我们知道，$\ell_\infty$范数是所有分量绝对值的最大值，和$\ell_1$范数是所有分量绝对值的和
+\begin{Gather}[L范数最小化]
+    \norm{\vb{x}}_{\infty}=\max\qty{\abs{x_1},\cdots,\abs{x_n}}\id{1}\\
+    \norm{\vb{x}}_{1}=\abs{x_1}+\cdots+\abs{x_n}\id{2}
+\end{Gather}
+
+故最小化$\norm{\vb{x}}_{\infty}$就等价于将$\vb{x}$所有分量限制在$[-t,t]$。随后将$t$最小化，而最小化$\norm{\vb{x}}_1$就等价于将$x_1,\cdots,x_n$分别限制在$[-t_1,t_1],\cdots,[-t_n,t_n]$的范围内，随后对$t_1+\cdots t_n$最小化。
+
+除此之外，多边形的切比雪夫中心，即多边形的最大内接球的球心，也可以转化为线性规划。
+
+多边形可以表示为
+\begin{Equation}[切比雪夫中心1]
+    \mathcal{P}=\qty{\vb{x}\mid\vb{a}_i^T\vb{x}\leq b_i,\ i=1,\cdots,m}
+\end{Equation}
+
+多边形的内接球可以表示为
+\begin{Equation}[切比雪夫中心2]
+    \mathcal{B}=\qty{\vb{x}_c+\vb{u}\mid\norm{\vb{u}}\leq r}
+\end{Equation}
+
+优化问题可以被描述为
+\begin{Equation}[切比雪夫中心3]
+    \begin{array}{ll}
+        \maximize   & r\\
+        \subto      & \vb{x}\in\mathcal{P},\ \vb{x}=\vb{x}_c+\vb{u},\ \norm{u}\leq r
+    \end{array}
+\end{Equation}
+
+根据多边形的约束
+\begin{Equation}[切比雪夫中心4]
+    \sup\qty{\vb{a}_i^T(\vb{x}_c+\vb{u})\mid\norm{\vb{u}}\leq r}\leq b_i
+\end{Equation}
+
+应用柯西-施瓦茨不等式$\vb{a}_i^T\vb{u}\leq\norm{\vb{u}}_2\norm{\vb{a}_i}_2\leq r\norm{\vb{a}_i}_2$
+\begin{Equation}[切比雪夫中心5]
+    \vb{a}_i^T\vb{x}_c+r\norm{\vb{a}_i}_2\leq b_i
+\end{Equation}
+
+因此，该优化问题就可以被转化为
+\begin{Equation}[切比雪夫中心6]
+    \begin{array}{ll}
+        \maximize   & r\\
+        \subto      & \vb{a}_i^T\vb{x}_c+r\norm{\vb{a}_i}_2\leq b_i
+    \end{array}
+\end{Equation}
+
+这里优化问题是关于$r$的，因此确实是一个线性规划。
+
+\subsection{二次规划（QP）}
+
+在二次规划中，目标函数是二次的，约束函数是仿射的。
+
+\begin{BoxDefinition}[二次规划]
+    二次规划（Quadratic Programing, QP）是指
+    \begin{Equation}[二次规划]
+        \begin{array}{ll}
+            \minimize   & (1/2)\vb{x}^T\vb{P}\vb{x}+\vb{q}^T\vb{x}+r \\
+            \subto      & \vb{G}\vb{x}\preceq\vb{h} \\
+                        & \vb{A}\vb{x}=\vb{b}
+        \end{array}
+    \end{Equation}
+\end{BoxDefinition}
+
+而如果不等式约束从仿射也变成了二次，这就变成了二次约束的二次规划。
+
+\begin{BoxDefinition}[二次约束二次规划]
+    二次约束二次规划（Quadratic Constrained Quadratic Programing, QCQP）是指
+    \begin{Equation}[二次规划]
+        \begin{array}{lll}
+            \minimize   & (1/2)\vb{x}^T\vb{P}\vb{x}+\vb{q}^T\vb{x}+r \\
+            \subto      & (1/2)\vb{x}^T\vb{P}_i\vb{x}+\vb{q}_i^T\vb{x}+r_i\leq 0    & i=1,\cdots,m\\
+                        & \vb{A}\vb{x}=\vb{b}
+        \end{array}
+    \end{Equation}
+\end{BoxDefinition}
+
+\subsection{二阶锥规划（SOCP）}
+
+若不等式约束是一个二阶范数锥，则称为二阶锥规划。
+
+\begin{BoxDefinition}[二阶锥规划]
+    二阶锥规划（Second Order Cone Programing, SOCP）是指
+    \begin{Equation}[二阶锥规划]
+        \begin{array}{lll}
+            \minimize   & \vb{c}^T\vb{x}+\vb{d} \\
+            \subto      & \norm{\vb{A}_i\vb{x}+\vb{b}_i}\leq\vb{c}_i^T\vb{x}+d_i & i=1,\cdots,m \\
+                        & \vb{A}\vb{x}=\vb{b}
+        \end{array}
+    \end{Equation}
+\end{BoxDefinition}
+
+若$\vb{A}_i=\vb{0}$，则SOCP将退化到LP，这是因为
+\begin{Equation}[SOCP转化1]
+    \norm{\vb{b}_i}\leq\vb{c}_i^T\vb{x}+d_i
+\end{Equation}
+
+通过将$i=1,\cdots,m$的$\vb{c}_i$和$d_i$合并为矩阵和向量，很容易转化为$\vb{G}\vb{x}\succeq\vb{h}$。
+
+若$\vb{c}_i=\vb{0}$，则SOCP将退化到QCQP，这是因为
+\begin{Equation}[SOCP转化2]
+    \norm{\vb{A}_i\vb{x}+\vb{b}_i}\leq d_i
+\end{Equation}
+
+通过$\norm{\vb{A}_i\vb{x}+\vb{b}_i}_2^2=(\vb{A}_i\vb{x}+\vb{b}_i)^T(\vb{A}_i\vb{x}+\vb{b}_i)$可以将不等约束转化为二次形式。
+
+\subsection{半正定规划（SDP）}
+
+若不等式约束是一个半正定锥，则称为半正定规划。
+
+\begin{BoxDefinition}[半正定规划]
+    半正定规划（Semidefinite Programing, SDP）是指
+    \begin{Equation}[半正定规划]
+        \begin{array}{lll}
+            \minimize   & \vb{c}^T\vb{x}+\vb{d} \\
+            \subto      & x_1\vb{F}_1+x_2\vb{F}_2+\cdots+x_n\vb{F}_n\preceq\vb{G} \\
+                        & \vb{A}\vb{x}=\vb{b}
+        \end{array}
+    \end{Equation}
+\end{BoxDefinition}
+
+SDP的不等约束也称为线性矩阵不等式（Linear Matrix Inequality, LMI）。
+
+SDP可以用于表示LP，其中$\vb{G}\vb{x}\preceq\vb{h}$对应
+\begin{Equation}[SDP转化1]
+    \vb{M}=\diag(\vb{G}\vb{x}-\vb{h})\preceq\vb{0}
+\end{Equation}
+
+SDP可以用于表示SOCP，其中$\norm{\vb{A}_i\vb{x}+\vb{b}_i}\leq\vb{c}_i^T\vb{x}+d_i$对应
+\begin{Equation}[SDP转化2]
+    \vb{M}=\mqty[
+        (\vb{c}_i\vb{x}+d_i)\vb{I}  & \vb{A}_i\vb{x}+\vb{b}_i \\
+        (\vb{A}_i\vb{x}+\vb{b}_i)^T & \vb{c}_i\vb{x}+d_i \\
+    ]\succeq 0
+\end{Equation}
+
+有趣的是，实际上这里的$\norm{\vb{A}_i\vb{x}+\vb{b}_i}\leq\vb{c}_i^T\vb{x}+d_i$就是$\det\vb{M}\geq 0$。
