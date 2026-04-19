@@ -1,1 +1,107 @@
 \section{优化问题}
+
+\subsection{优化问题的定义}
+
+\begin{BoxDefinition}[优化问题]
+    优化问题（Optimization Problems）是指
+    \begin{Equation}[优化问题]
+        \begin{array}{lll}
+            \minimize   &f_0(\vb{x})\\
+            \subto      &f_i(\vb{x})\leq 0, &i=1,\cdots,m\\
+                        &h_i(\vb{x})=0,     &i=1,\cdots,p
+        \end{array}
+    \end{Equation}
+    \begin{itemize}
+        \item $\vb{x}\in\R^n$是优化变量（Optimization Variable）。
+        \item $f_0:\R^n\to\R$是目标函数（Objective Function）。
+        \item $f_i:\R^n\to\R$是不等式约束函数，$f_i(\vb{x})\leq 0$是不等式约束（Inequality Constraint）。
+        \item $h_i:\R^n\to\R$是等式约束函数，$h_i(\vb{x})= 0$是等式约束（Equality Constraint）。
+    \end{itemize}
+    若一个问题没有约束，即$m=p=0$，则称该优化问题是无约束（Unconstrained）的。
+\end{BoxDefinition}
+
+优化问题的定义域是由目标函数和约束函数的定义域的交集构成的
+\begin{Equation}[优化问题1]
+    \mathcal{D}=\BigCap[i=1][m]\dom f_i\cap\BigCap[i=1][p]\dom h_i
+\end{Equation}
+
+若一个点$\vb{x}\in\mathcal{D}$且满足约束$f_i(\vb{x})\leq 0$和$h_i(\vb{x})=0$，则称$\vb{x}$是可行的（Feasible）。
+
+优化问题的最优值$p^{*}$（Optimized Value）可以形式化的表达为
+\begin{Equation}[优化问题2]
+    p^{*}=\inf\qty{f_0(\vb{x})\mid f_i(\vb{x})\leq 0,\ i=1,\cdots,m,\ h_i(\vb{x})=0,\ i,1=,\cdots,p}
+\end{Equation}
+
+特别的，当$p^{*}=+\infty$代表优化问题不可行（Infeasible），当$p^{*}=--\infty$代表优化问题下无界（Unbounded Below）。最优值$p^{*}=f_0(\vb{x}^{*})$对应的点称为最优点$\vb{x}^{*}$（Optimzed Point）。
+
+而若$\vb{x}$是在一个邻域$\norm{\vb{z}-\vb{x}}_2\leq R$的最优点，则称$\vb{x}$是局部最优（Locally Optimial）。
+
+\begin{BoxDefinition}[可行问题]
+    可行问题（Feasibility Problems）是指
+    \begin{Equation}[优化问题]
+        \begin{array}{lll}
+            \find       &\vb{x}\\
+            \subto      &f_i(\vb{x})\leq 0, &i=1,\cdots,m\\
+                        &h_i(\vb{x})=0,     &i=1,\cdots,p
+        \end{array}
+    \end{Equation}
+\end{BoxDefinition}
+
+实际上，可行问题的$\find\ \vb{x}$等价于$\minimize\ 0$，即任何满足可行性的点都是最优秀点。
+
+\subsection{优化问题的等价变换}
+
+\begin{BoxProperty}[消去等式约束]
+    以下的优化问题，具有线性的等式约束
+    \begin{Equation}[消去等式约束1]
+        \begin{array}{lll}
+            \minimize   &f_0(\vb{x})\\
+            \subto      &f_i(\vb{x})\leq 0, &i=1,\cdots,m\\
+                        &\vb{A}\vb{x}=\vb{b}   
+        \end{array}
+    \end{Equation}
+    可以转化为
+    \begin{Equation}[消去等式约束2]
+        \begin{array}{lll}
+            \minimize   &f_0(\vb{F}\vb{z}+\vb{x}_0)\\
+            \subto      &f_i(\vb{F}\vb{z}+\vb{x}_0)\leq 0, &i=1,\cdots,m\\
+        \end{array}
+    \end{Equation}
+    其中，$\vb{x}_0$是任意满足$\vb{A}\vb{x}_0=\vb{b}$的解，$\vb{F}$满足$\rangespace(\vb{F})=\nullspace(\vb{A})$。
+\end{BoxProperty}
+
+这里可以认为是做了$\vb{x}=\vb{F}\vb{z}+\vb{x}_0$的变换，注意到$\vb{A}\vb{x}=\vb{A}\vb{F}\vb{z}+\vb{A}\vb{x}_0=\vb{b}$。
+
+\cref{ppt:消去等式约束}的意义是将原本取值限制在$\vb{A}\vb{x}=\vb{b}$上的$\vb{x}$转换为了自由取值的$\vb{z}$，移除等式约束。
+
+\begin{BoxProperty}[转为等式约束]
+    以下的优化问题，具有线性的不等式约束，无等式约束
+    \begin{Equation}[转为等式约束1]
+        \begin{array}{lll}
+            \minimize   &f_0(\vb{x})\\
+            \subto      &\vb{A}(\vb{x})\preceq \vb{b}, &i=1,\cdots,m\\
+        \end{array}
+    \end{Equation}
+    可以转化为
+    \begin{Equation}[转为等式约束2]
+        \begin{array}{lll}
+            \minimize   &f_0(\vb{x})\\
+            \subto      &\vb{A}(\vb{x})+\vb{s}=\vb{b}, &i=1,\cdots,m\\
+                        &\vb{s}\succeq 0
+        \end{array}
+    \end{Equation}
+\end{BoxProperty}
+
+\cref{ppt:转为等式约束}的意义是将不等式约束$\vb{A}(\vb{x})\preceq \vb{b}$转换为对某个$\vb{s}\succeq\vb{0}$的等式约束$\vb{A}(\vb{x})+\vb{s}=\vb{b}$。
+
+\begin{BoxProperty}[优化问题的上图形式]
+    标准形式的优化问题，可以转化为
+    \begin{Equation}[优化问题的上图形式1]
+        \begin{array}{lll}
+            \minimize   &t\\
+            \subto      &f_0(\vb{x})-t\leq 0\\
+                        &f_i(\vb{x})\leq 0, &i=1,\cdots,m\\
+                        &h_i(\vb{x})=0,     &i=1,\cdots,p
+        \end{array}
+    \end{Equation}
+\end{BoxProperty}
