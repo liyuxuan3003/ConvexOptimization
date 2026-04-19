@@ -1,1 +1,111 @@
 \section{凸优化问题}
+
+\begin{BoxDefinition}[凸优化问题]
+    凸优化问题（Convex Optimization Problem）是指
+    \begin{Equation}[凸优化问题]
+        \begin{array}{lll}
+            \minimize   & f_0(\vb{x}) \\
+            \subto      & f_i(\vb{x})\leq 0     & i=1,\cdots,m \\
+                        & \vb{A}\vb{x}=\vb{b}
+        \end{array}
+    \end{Equation}
+    其中，$f_0,f_1,\cdots f_m$是凸函数。
+\end{BoxDefinition}
+
+若比较\cref{def:凸优化问题}和\cref{def:优化问题}，注意到凸优化问题额外添加的限制包括
+\begin{itemize}
+    \item 目标函数和不等式约束函数应当是凸函数。
+    \item 等式约束函数应当是仿射函数。
+\end{itemize}
+
+由于凸函数的定义域是凸集，因此凸优化问题的定义域也必然是凸集
+\begin{Equation}[凸优化问题推导1]
+    \mathcal{D}=\BigCap[i=0][m]\dom f_i
+\end{Equation}
+
+有些优化问题不是凸优化问题，$x_1/(1+x_2)^2$是非凸的，$(x_1+x_2)^2$是非仿射的
+\begin{Equation}[凸优化问题推导2]
+    \begin{array}{ll}
+        \minimize   & x_1^2+x_2^2 \\
+        \subto      & x_1/(1+x_2^2)\leq 0 \\
+                    & (x_1+x_2)^2=0
+    \end{array}
+\end{Equation}
+
+但$(x_1+x_2)^2=0$可以求出$x_1+x_2=0$，而$x_1/(1+x_2)^2\leq 0$相当于$x_1\leq 0$
+\begin{Equation}[凸优化问题推导3]
+    \begin{array}{ll}
+        \minimize   & x_1^2+x_2^2 \\
+        \subto      & x_1\leq 0 \\
+                    & x_1+x_2=0
+    \end{array}
+\end{Equation}
+
+现在这就转化为一个凸问题了！
+
+\begin{BoxProperty}[凸优化的全局最优性]
+    凸优化问题的局部最优解就是全局最优解。
+\end{BoxProperty}
+
+\begin{Proof}[\cref{ppt:凸优化的全局最优性}]
+    假设$\vb{x}$是局部最优，而$\vb{y}$是全局最优且满足$f_0(\vb{y})\leq f_0(\vb{x})$，取$\vb{x},\vb{y}$间的线段
+    \begin{Equation}[凸优化的全局最优性1]
+        \vb{z}=\theta\vb{y}+(1-\theta)\vb{x}
+    \end{Equation}
+
+    由于$f_0(\vb{y})\leq f_0(\vb{x})$
+    \begin{Equation}[凸优化的全局最优性2]
+        \theta f_0(\vb{y})+(1-\theta)f_0(\vb{x})<f_0(\vb{x})\qquad\theta\in(0,1]
+    \end{Equation}
+
+    利用$f_0$的凸性
+    \begin{Equation}[凸优化的全局最优性3]
+        f_0(\theta\vb{y}+(1-\theta)\vb{x})=f_0(\vb{z})<f_0(\vb{x})\qquad\theta\in(0,1]
+    \end{Equation}
+
+    当$\theta$足够小使$\vb{z}$将位于$\vb{x}$的邻域内时，$f_0(\vb{z})<f_0(\vb{x})$将与$\vb{x}$的局部最优性矛盾。
+\end{Proof}
+
+\begin{BoxProperty}[凸优化的最优解]
+    凸优化问题中，可行点$\vb{x}$是最优的，当且仅当对于所有可行点$\vb{y}$有
+    \begin{Equation}[凸优化的最优解一般]
+        \grad f_0(\vb{x})^T(\vb{y}-\vb{x})\geq 0
+    \end{Equation}
+    特别的，对于无约束问题
+    \begin{Equation}[凸优化的最优解特殊]
+        \grad f_0(\vb{x})=0
+    \end{Equation}
+\end{BoxProperty}
+
+\begin{Proof}[\cref{ppt:凸优化的最优解}]
+    \subparagraph{充分性} 已知$\grad f_0(\vb{x})^T(\vb{y}-\vb{x})\geq 0$，证明$\vb{x}$是最优的。
+
+    由于$f_0$是凸函数，根据\cref{thm:凸函数的一阶条件}
+    \begin{Equation}[凸优化的最优解1]
+        f_0(\vb{y})\geq f_0(\vb{x})+\grad f_0(\vb{x})^T(\vb{y}-\vb{x})
+    \end{Equation}
+
+    由于$\grad f_0(\vb{x})^T(\vb{y}-\vb{x})\geq 0$
+    \begin{Equation}[凸优化的最优解2]
+        f_0(\vb{y})\geq f_0(\vb{x})
+    \end{Equation}
+
+    \subparagraph{必要性} 已知$\vb{x}$是最优的，证明$\grad f_0(\vb{x})^T(\vb{y}-\vb{x})\geq 0$。
+
+    使用反证法，假设下式成立
+    \begin{Equation}[凸优化的最优解3]
+        \grad f_0(\vb{x})^T(\vb{y}-\vb{x})
+    \end{Equation}
+
+    构造$\vb{z}(t)=t\vb{y}+(1-t)\vb{x}$
+    \begin{Equation}[凸优化的最优解4]
+        \dv{t}f_0(\vb{z}(t))=\grad f_0(t\vb{y}+(1-t)\vb{x})^T(\vb{y}-\vb{x})
+    \end{Equation}
+
+    当$t=0$时有
+    \begin{Equation}[凸优化的最优解5]
+        \dv{t}f_0(\vb{z}(t))\eval_{t=0}=\grad f_0(\vb{x})^T(\vb{y}-\vb{x})<0
+    \end{Equation}
+
+    根据导数的定义，这就说明对于一个很小的$t$，有$f(\vb{z}(t))<f(\vb{x})$，这和$\vb{x}$是最优点矛盾。
+\end{Proof}
