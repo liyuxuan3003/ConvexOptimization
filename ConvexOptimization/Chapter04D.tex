@@ -1,1 +1,39 @@
 \section{KKT条件}
+
+\subsection{KKT条件的必要性}
+
+现在我们来思考这样一个问题，对于一个具备强对偶性的优化问题，若$\vb{x}^{*}$和$\vb*{\lambda}^{*},\vb*{\nu}^{*}$分别是原问题和对偶问题的最优解，那我们可以得出什么结论？强对偶性给出$f_0(\vb{x}^{*})=g(\vb*{\lambda},\vb*{\nu})$
+\begin{Split}[KKT条件不等式]
+    f_0(\vb{x}^{*})=g(\vb*{\lambda},\vb*{\nu})
+    &=\inf_{\vb{x}}\qty(f_0(\vb{x})+\Sum[i=1][m]\lambda_i^{*}f_i(\vb{x})+\Sum[i=1][p]\nu_i^{*}h_i(\vb{x}))\\
+    &\leq f_0(\vb{x}^{*})+\Sum[i=1][m]\lambda_i^{*}f_i(\vb{x}^{*})+\Sum[i=1][p]\nu_i^{*}h_i(\vb{x}^{*})\\
+    &\leq f_0(\vb{x}^{*})
+\end{Split}
+
+显然，这里的两个$\leq$都必须取$=$才能使$f_0(\vb{x}^{*})=g(\vb*{\lambda}+\vb*{\nu})$
+\begin{itemize}
+    \item 第一个等号成立，意味着$\grad_{\vb{x}}L(\vb{x},\vb*{\lambda}^{*},\vb*{\nu}^{*})|_{\vb{x}^{*}}=\vb{0}$。
+    \item 第二个等号成立，意味着$\lambda_i f_i(\vb{x}^{*})=0$，对于$i=1,\cdots,m$。这个性质一般称为互补松弛性（Complementary Slackness）：若$\lambda_i^{*}>0$则$f_i(\vb{x}^{*})=0$，若$f_i(\vb{x}^{*})=0$则$\lambda_i^{*}>0$。
+\end{itemize}
+
+除此之外，$\vb{x}^{*}$和$\vb*{\lambda}^{*},\vb*{\nu}^{*}$作为最优解至少也应当是可行解。这四个条件就是著名的KKT条件！
+
+\begin{BoxDefinition}[KKT条件]
+    KKT条件（Karush-Kuhn-Tucker）是指
+    \begin{itemize}
+        \item 原始可行性：$f_i(\vb{x})\leq 0,\ i=1,\cdots,m,\ h_i(\vb{x})=0,\ i=1,\cdots,p$
+        \item 对偶可行性：$\lambda_i\geq 0,\ i=1,\cdots,m$
+        \item 互补松弛性：$\lambda_if_i(\vb{x})=0,\ i=1,\cdots,m$
+        \item 稳定性：$\grad_{\vb{x}}L(\vb{x},\vb*{\lambda}^{*},\vb*{\nu}^{*})|_{\vb{x}^{*}}=\vb{0}$
+    \end{itemize}
+\end{BoxDefinition}
+
+\subsection{KKT条件的充分性}
+
+\begin{BoxTheorem}[KKT条件]
+    对于满足Slater条件的凸问题，$\vb{x}^{*},\vb*{\lambda},\vb*{\nu}$是最优解当且仅当其满足KKT条件。
+\end{BoxTheorem}
+
+\begin{Proof}[\cref{thm:KKT条件}]
+    必要性在上一小节已经证明了。充分性的关键在于稳定性$\grad_{\vb{x}}L(\vb{x},\vb*{\lambda}^{*},\vb*{\nu}^{*})|_{\vb{x}^{*}}=\vb{0}$为何可以导出 $L(\vb{x}^{*},\vb*{\lambda}^{*},\vb*{\nu}^{*})=\inf_{\vb{x}}L(\vb{x},\vb*{\lambda}^{*},\vb*{\nu}^{*})$。而对于凸问题，梯度为零的局部最优就是全局最优！
+\end{Proof}

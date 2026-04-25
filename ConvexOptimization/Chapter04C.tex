@@ -1,2 +1,44 @@
 \section{弱对偶性与强对偶性}
 
+我们用$p^{*}$和$d^{*}$分别表示$f(\vb{x})$和$g(\vb*{\lambda},\vb*{\nu})$的最优解，那么$p^{*}$和$d^{*}$的关系是什么？
+
+\subsection{弱对偶性}
+
+\begin{BoxDefinition}[弱对偶性]
+    弱对偶性（Weak Duality）是指
+    \begin{Equation}[弱对偶性]
+        d^{*}\leq p^{*}
+    \end{Equation}
+\end{BoxDefinition}
+
+弱对偶性总是成立的，根据\cref{ppt:拉格朗日对偶的下界性}。其中$p^{*}-d^{*}$称为对偶间隙（Duality Gap）。
+
+\subsection{强对偶性}
+
+\begin{BoxDefinition}[强对偶性]
+    强对偶性（Strong Duality）是指
+    \begin{Equation}[强对偶性]
+        d^{*}=p^{*}
+    \end{Equation}
+\end{BoxDefinition}
+
+强对偶性是极好的性质，它意味着，我们可以将带有复杂约束$f_i(\vb{x})\leq 0$和$h_i(\vb{x})=0$的原问题$f(\vb{x})$的最优化转化为对只有简单约束$\vb*{\lambda}\succeq\vb{0}$的对偶问题$\vb{x}$的最优化。除此之外，如果原问题的维度$n$很大而约束数量$m,p$很小，将$f(\vb{x})$转换为$g(\vb*{\lambda},\vb*{\nu})$就可以显著降低问题的维度。
+
+强对偶性并不总是成立，但幸运的是，强对偶性对于大部分凸问题是成立的！
+
+\subsection{Slater条件}
+
+\begin{BoxProperty}[Slater条件]
+    Slater条件是指，对于一个凸问题，若存在$\vb{x}\in\relint\mathcal{D}$，满足
+    \begin{Equation}[Slater条件]
+        f_i(\vb{x})<0,\ i=1,\cdots,m\qquad \vb{A}\vb{x}=\vb{b}
+    \end{Equation}
+    即$\vb{x}$是严格可行的（Strictly Feasible），则该凸问题具有强对偶性。
+\end{BoxProperty}
+
+Slater条件指出，只要凸问题存在一个严格可行点，它就满足强对偶性！相较于可行，严格可行的要求仅仅从$\vb{x}\in\mathcal{D}$时$f_i(\vb{x})\leq 0$提高到$\vb{x}\in\relint\mathcal{D}$时$f_i(\vb{x})<0$（$\relint\mathcal{D}$是$\mathcal{D}$的内部）。
+
+Slater条件对于大部分的凸问题都是成立的，就像物理中总是认为函数可微一样。
+
+
+
