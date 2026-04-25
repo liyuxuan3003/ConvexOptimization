@@ -1,1 +1,98 @@
 \section{对偶问题}
+
+根据\cref{ppt:拉格朗日对偶的下界性}，由于满足$\vb*{\lambda}\succeq\vb{0}$时拉格朗日对偶函数有$p^{*}\geq g(\vb*{\lambda},\vb*{\nu})$成立，若能在$\vb*{\lambda}\succeq\vb{0}$下找到$g(\vb*{\lambda},\vb*{\nu})$的最大值$d^{*}$，就可以确定原问题的下界$p^{*}\geq d^{*}$，这就是求解对偶问题的价值！
+
+\begin{BoxDefinition}[拉格朗日对偶问题]
+    拉格朗日对偶问题（Lagrange Dual Problem）定义为
+    \begin{Equation}[拉格朗日对偶问题]
+        \begin{array}{lll}
+            \maximize   & g(\vb*{\lambda},\vb*{\nu}) \\
+            \subto      & \vb*{\lambda}\succeq\vb{0} \\
+        \end{array}
+    \end{Equation}
+\end{BoxDefinition}
+
+\subsection{求最小二乘规划的对偶问题}
+
+\begin{BoxProperty}[最小二乘规划的对偶问题]
+    对于最小二乘规划
+    \begin{Equation}[最小二乘规划]
+        \begin{array}{lll}
+            \minimize   & \vb{x}^T\vb{x} \\
+            \subto      & \vb{A}\vb{x}=\vb{b} \\
+        \end{array}
+    \end{Equation}
+    其对偶问题是
+    \begin{Equation}[最小二乘规划的对偶问题]
+        \begin{array}{lll}
+            \maximize   & -\vb*{\nu}^T\vb{A}\vb{A}^T\vb*{\nu}/4-\vb{b}^T\vb*{\nu}
+        \end{array}
+    \end{Equation}
+\end{BoxProperty}
+
+\begin{Proof}[\cref{ppt:最小二乘规划的对偶问题}]
+    拉格朗日函数为
+    \begin{Equation}[最小二乘规划的对偶问题1]
+        L(\vb{x},\vb*{\nu})=\vb{x}^T\vb{x}+\vb*{\nu}(\vb{A}\vb{x}-\vb{b})
+    \end{Equation}
+
+    拉格朗日函数的梯度为零的点
+    \begin{Equation}[最小二乘规划的对偶问题2]
+        \grad_{\vb{x}}L(\vb{x},\vb*{\nu})=2\vb{x}+\vb{A}^T\vb*{\nu}=\vb{0}
+    \end{Equation}
+
+    求出$\vb{x}=-\vb{A}^T\vb*{\nu}/2$，因此
+    \begin{Equation}[最小二乘规划的对偶问题3]
+        g(\vb*{\nu})=\inf_{\vb{x}} L(\vb{x},\vb*{\nu})=L(-\vb{A}^T\vb*{\nu}/2,\vb*{\nu})=\vb*{\nu}^T\vb{A}\vb{A}^T\vb*{\nu}/4-\vb{b}^T\vb*{\nu}
+    \end{Equation}
+
+    这就求得了对偶问题。
+\end{Proof}
+
+\subsection{求标准线性规划的对偶问题}
+
+\begin{BoxProperty}[标准线性规划的对偶问题]
+    对于标准线性规划
+    \begin{Equation}[标准线性规划]
+        \begin{array}{lll}
+            \minimize   & \vb{c}^T\vb{x} \\
+            \subto      & \vb{A}\vb{x}=\vb{b} \\
+                        & \vb{x}\succeq\vb{0}
+        \end{array}
+    \end{Equation}
+
+    其对偶问题是
+    \begin{Equation}[标准线性规划的对偶问题]
+        \begin{array}{lll}
+            \maximize   & -\vb{b}^T\vb*{\nu} \\
+            \subto      & \vb{c}+\vb{A}^T\vb*{\nu}\succeq\vb{0} \\
+        \end{array}
+    \end{Equation}
+\end{BoxProperty}
+
+\begin{Proof}[\cref{ppt:标准线性规划的对偶问题}]
+    拉格朗日函数为
+    \begin{Equation}[标准线性规划的对偶问题1]
+        L(\vb{x},\vb*{\lambda},\vb*{\nu})=\vb{c}^T\vb{x}+\vb*{\nu}^T(\vb{A}\vb{x}-\vb{b})-\vb*{\lambda}^T\vb{x}
+    \end{Equation}
+
+    提取所有$\vb{x}$的项
+    \begin{Equation}[标准线性规划的对偶问题2]
+        L(\vb{x},\vb*{\lambda},\vb*{\nu})=(\vb{c}+\vb{A}^T\vb*{\nu}-\vb*{\lambda})^T\vb{x}-\vb{b}^T\vb*{\nu}
+    \end{Equation}
+
+    注意到，若$\vb{c}+\vb{A}^T\vb*{\nu}-\vb*{\lambda}\neq\vb{0}$则$L$无上界，若$\vb{c}+\vb{A}^T\vb*{\nu}-\vb*{\lambda}=\vb{0}$则$L$是常数
+    \begin{Equation}[标准线性规划的对偶问题3]
+        g(\vb*{\lambda},\vb*{\nu})=\inf_{\vb{x}}L(\vb{x},\vb*{\lambda},\vb*{\nu})=\begin{cases}
+            -\vb{b}^T\vb*{\nu}, &\vb{c}+\vb{A}^T\vb*{\nu}-\vb*{\lambda}=\vb{0}\\
+            -\infty, &\vb{c}+\vb{A}^T\vb*{\nu}-\vb*{\lambda}\neq\vb{0}\\
+        \end{cases}
+    \end{Equation}
+
+    而由于$\vb*{\lambda}\succeq\vb{0}$，因此从$\vb{c}+\vb{A}^T\vb*{\nu}-\vb*{\lambda}=\vb{0}$中可以得到不等式约束
+    \begin{Equation}[标准线性规划的对偶问题4]
+        \vb{c}+\vb{A}^T\vb*{\nu}\succeq\vb{0}
+    \end{Equation}
+
+    这就求得了对偶问题。
+\end{Proof}

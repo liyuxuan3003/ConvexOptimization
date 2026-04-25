@@ -1,22 +1,11 @@
 \section{对偶函数}
 
-在这一章，我们考虑\cref{def:优化问题}给出的标准形式的优化问题
-\begin{Equation}[优化问题]
-    \begin{array}{lll}
-        \minimize   &f_0(\vb{x})\\
-        \subto      &f_i(\vb{x})\leq 0, &i=1,\cdots,m\\
-                    &h_i(\vb{x})=0,     &i=1,\cdots,p
-    \end{array}
-\end{Equation}
-
-其中，优化变量$\vb{x}\in\R^n$，优化变量的定义域记为$\mathcal{D}$，最优值记为$p^{*}$。
-
 \subsection{拉格朗日函数}
 
 \begin{BoxDefinition}[拉格朗日函数]
-    拉格朗日函数（Lagrangian Function）$\mathcal{L}: \R^n\times\R^m\times\R^p\to\R$，定义为
+    拉格朗日函数（Lagrangian Function）$L: \R^n\times\R^m\times\R^p\to\R$，定义为
     \begin{Equation}[拉格朗日函数]
-        \mathcal{L}(\vb{x},\vb*{\lambda},\vb*{\nu})=f_0(\vb*{x})+\Sum[i=1][m]\lambda_if_i(\vb{x})=\Sum[i=1][p]\nu_i h_i(\vb{x})
+        L(\vb{x},\vb*{\lambda},\vb*{\nu})=f_0(\vb*{x})+\Sum[i=1][m]\lambda_if_i(\vb{x})=\Sum[i=1][p]\nu_i h_i(\vb{x})
     \end{Equation}
     其中$\lambda_i$和$\nu_i$分别称为$f_i(\vb{x})\leq 0$和$h_i(\vb{x})=0$的拉格朗日乘数（Lagrange Multiplier）。
 \end{BoxDefinition}
@@ -26,28 +15,28 @@
 \begin{BoxDefinition}[拉格朗日对偶函数]
     拉格朗日对偶函数（Lagrange Dual Function）$g: \R^m\times\R^p\to\R$，定义为
     \begin{Equation}[拉格朗日对偶函数]
-        g(\vb*{\lambda},\vb*{\nu})=\inf_{\vb{x}\in\mathcal{D}}\mathcal{L}(\vb{x},\vb*{\lambda},\vb*{\nu})
+        g(\vb*{\lambda},\vb*{\nu})=\inf_{\vb{x}\in\mathcal{D}}L(\vb{x},\vb*{\lambda},\vb*{\nu})
     \end{Equation}
 \end{BoxDefinition}
 
-简而言之，拉格朗日对偶$g(\vb*{\lambda},\vb*{\nu})$是拉格朗日$\mathcal{L}(\vb{x},\vb*{\lambda},\vb*{\nu})$关于$\vb{x}\in\mathcal{D}$的下确界。
+简而言之，拉格朗日对偶$g(\vb*{\lambda},\vb*{\nu})$是拉格朗日$L(\vb{x},\vb*{\lambda},\vb*{\nu})$关于$\vb{x}\in\mathcal{D}$的下确界。
 
 \begin{BoxProperty}[拉格朗日对偶的下界性]
-    拉格朗日对偶在$\vb*{\lambda}\succeq\vb*{0}$时，总是不高于原问题的最优值$p^{*}$
+    拉格朗日对偶函数在$\vb*{\lambda}\succeq\vb*{0}$时，总是小于等于原问题的最优值$p^{*}$
     \begin{Equation}[拉格朗日对偶的下界性]
         \vb*{\lambda}\succeq\vb{0}\qquad g(\vb*{\lambda},\vb*{\nu})\leq p^{*}
     \end{Equation}
 \end{BoxProperty}
 
 \begin{Proof}[\cref{ppt:拉格朗日对偶的下界性}]
-    根据\cref{def:拉格朗日对偶函数}，设$x^{*}$为最优点，$\mathcal{L}(\vb{x},\vb*{\lambda},\vb*{\nu})$在$\vb{x}\in\mathcal{D}$上的下确界一定小于等于$\mathcal{L}(\vb{x}^{*},\vb*{\lambda},\vb*{\nu})$
+    根据\cref{def:拉格朗日对偶函数}，设$x^{*}$为最优点，$L(\vb{x},\vb*{\lambda},\vb*{\nu})$在$\vb{x}\in\mathcal{D}$上的下确界一定小于等于$L(\vb{x}^{*},\vb*{\lambda},\vb*{\nu})$
     \begin{Equation}[拉格朗日对偶的下界性1]
-        g(\vb*{\lambda},\vb*{\nu})=\inf_{\vb{x}\in\mathcal{D}}\mathcal{L}(\vb{x},\vb*{\lambda},\vb*{\nu})\leq\mathcal{L}(\vb{x}^{*},\vb*{\lambda},\vb*{\nu})
+        g(\vb*{\lambda},\vb*{\nu})=\inf_{\vb{x}\in\mathcal{D}}L(\vb{x},\vb*{\lambda},\vb*{\nu})\leq L(\vb{x}^{*},\vb*{\lambda},\vb*{\nu})
     \end{Equation}
 
     若$\lambda_i\geq 0$，考虑到$f_i(\vb{x}^{*})\leq 0$和$h_i(\vb{x}^{*})=0$
     \begin{Equation}[拉格朗日对偶的下界性2]
-        \mathcal{L}(\vb{x}^{*},\vb*{\lambda},\vb*{\nu})=f_0(\vb*{x}^{*})+\Sum[i=1][m]\lambda_if_i(\vb{x}^{*})=\Sum[i=1][p]\nu_i h_i(\vb{x}^{*})\leq f_0(\vb{x}^{*})=p^{*}
+        L(\vb{x}^{*},\vb*{\lambda},\vb*{\nu})=f_0(\vb*{x}^{*})+\Sum[i=1][m]\lambda_if_i(\vb{x}^{*})=\Sum[i=1][p]\nu_i h_i(\vb{x}^{*})\leq f_0(\vb{x}^{*})=p^{*}
     \end{Equation}
 
     因此就有$g(\vb*{\lambda},\vb*{\nu})\leq p^{*}$成立。
