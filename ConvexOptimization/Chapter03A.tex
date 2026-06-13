@@ -29,12 +29,12 @@
 
 优化问题的最优值$p^{*}$（Optimized Value）可以形式化的表达为
 \begin{Equation}[优化问题2]
-    p^{*}=\inf\qty{f_0(\vb{x})\mid f_i(\vb{x})\leq 0,\ i=1,\cdots,m,\ h_i(\vb{x})=0,\ i,1=,\cdots,p}
+    p^{*}=\inf\qty{f_0(\vb{x})\mid f_i(\vb{x})\leq 0,\ i=1,\cdots,m,\ h_i(\vb{x})=0,\ i=1,\cdots,p}
 \end{Equation}
 
-特别的，当$p^{*}=+\infty$代表优化问题不可行（Infeasible），当$p^{*}=--\infty$代表优化问题下无界（Unbounded Below）。最优值$p^{*}=f_0(\vb{x}^{*})$对应的点称为最优点$\vb{x}^{*}$（Optimzed Point）。
+特别的，当$p^{*}=+\infty$代表优化问题不可行（Infeasible），当$p^{*}=-\infty$代表优化问题下无界（Unbounded Below）。最优值$p^{*}=f_0(\vb{x}^{*})$对应的点称为最优点$\vb{x}^{*}$（Optimized Point）。
 
-而若$\vb{x}$是在一个邻域$\norm{\vb{z}-\vb{x}}_2\leq R$的最优点，则称$\vb{x}$是局部最优（Locally Optimial）。
+而若$\vb{x}$是在一个邻域$\norm{\vb{z}-\vb{x}}_2\leq R$的最优点，则称$\vb{x}$是局部最优（Locally Optimal）。
 
 \begin{BoxDefinition}[可行问题]
     可行问题（Feasibility Problems）是指
