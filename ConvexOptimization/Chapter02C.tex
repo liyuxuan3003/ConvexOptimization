@@ -46,12 +46,12 @@
 
     根据泰勒中值定理，存在一个$z$满足$x\leq z\leq y$，使得
     \begin{Equation}[二阶充分性1]
-        f(y)=f(x)+f'(x)(1-x)+\frac{1}{2}f''(z)(y-x)^2
+        f(y)=f(x)+f'(x)(y-x)+\frac{1}{2}f''(z)(y-x)^2
     \end{Equation}
 
     由于$f$满足二阶条件，故$f''(z)\geq 0$，因此由\cref{eq:二阶充分性1}即可给出$f$的一阶条件
     \begin{Equation}[二阶充分性2]
-        f(y)\geq f(x)+f'(x)(1-x)
+        f(y)\geq f(x)+f'(x)(y-x)
     \end{Equation}
 
     \subparagraph{推广到$n=1$的情况} 现在利用\cref{ppt:凸函数的充要条件}构造$g(t)$并容易求出$g'(t)$
