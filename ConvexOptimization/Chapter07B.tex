@@ -1,0 +1,114 @@
+\section{二次问题的迭代}
+
+在这一节，我们固定考虑一个特定的二次问题，形如
+\begin{Equation}[二次问题的目标函数]
+    \begin{array}{ll}
+        \minimize_{\vb{x}}&f(\vb{x})=\frac{1}{2}(\vb{x}-\vb{x}^{*})^T\vb{Q}(\vb{x}-\vb{x}^{*})\\
+        \subto&\vb{x}\in\R
+    \end{array}
+\end{Equation}
+
+其中$\vb{Q}\in\R^{n\times n}$并满足$\vb{Q}\succeq\vb{0}$，显然
+\begin{Equation}[二次问题的梯度]
+    \begin{array}{ll}
+       \grad f(\vb{x})=\vb{Q}(\vb{x}-\vb{x}^{*})
+    \end{array}
+\end{Equation}
+
+接下来，我们将在该二次问题讨论两种迭代步长的选取：固定步长，精确线搜索。
+
+\subsection{固定步长的收敛性}
+
+\begin{BoxProperty}[二次问题在固定步长下的步长]
+    二次问题，应用固定步长，应取步长为
+    \begin{Equation}[二次问题在固定步长下的步长]
+        \eta_t=\frac{2}{\lambda_1+\lambda_n}
+    \end{Equation}
+    其中$\lambda_1$和$\lambda_n$分别是$\vb{Q}$最大和最小的特征值。
+\end{BoxProperty}
+
+\begin{BoxProperty}[二次问题在固定步长下的收敛]
+    二次问题，应用固定步长，满足以下收敛性质
+    \begin{Equation}[二次问题在固定步长下的收敛]
+        \norm{\vb{x}_t-\vb{x}}\leq\qty(\frac{\lambda_1-\lambda_n}{\lambda_1-\lambda_n})^t\norm{\vb{x}_0-\vb{x}^{*}}
+    \end{Equation}
+\end{BoxProperty}
+
+我们可以证明这一点，根据\cref{def:梯度下降}，代入\cref{eq:二次问题的梯度}
+\begin{Equation}[二次问题固定步长1]
+    \vb{x}_{t+1}=\vb{x}_t-\eta\grad f(\vb{x}_t)=\vb{x}_t-\eta\vb{Q}(\vb{x}_t-\vb{x}^{*})
+\end{Equation}
+
+两边同时减去$\vb{x}^{*}$
+\begin{Equation}[二次问题固定步长2]
+    \vb{x}_{t+1}-\vb{x}^{*}=(\vb{I}-\eta\vb{Q})(\vb{x}_t-\vb{x}^{*})
+\end{Equation}
+
+两边取模
+\begin{Equation}[二次问题固定步长2]
+    \norm{\vb{x}_{t+1}-\vb{x}^{*}}_2\leq\norm{\vb{I}-\eta\vb{Q}}_2\norm{\vb{x}_t-\vb{x}^{*}}_2
+\end{Equation}
+
+矩阵的$\norm{\cdot}_2$是谱范数，谱范数等价于最大奇异值，而对称矩阵的奇异值就是特征值的模
+\begin{Equation}[二次问题固定步长3]
+    \norm{\vb{I}-\eta\vb{Q}}_2=\max\abs{1-\eta\lambda}
+\end{Equation}
+
+显然，问题的关键在于$\lambda_1$和$\lambda_n$
+\begin{Equation}[二次问题固定步长4]
+    \norm{\vb{I}-\eta\vb{Q}}_2=\max\qty{\abs{1-\eta\lambda_1},\abs{1-\eta\lambda_n}}
+\end{Equation}
+
+因此$\eta$的取值应能使两者相同，且由于$\lambda_1>\lambda_n$，两者恰好是一正一负
+\begin{Equation}[二次问题固定步长5]
+    (1-\eta\lambda_1)=-(1-\eta\lambda_n)
+\end{Equation}
+
+从而解得
+\begin{Equation}[二次问题固定步长6]
+    \eta=\frac{2}{\lambda_1+\lambda_n}
+\end{Equation}
+
+以及
+\begin{Equation}[二次问题固定步长7]
+    \abs{1-\eta\lambda_n}=\abs{1-\eta\lambda_1}=\frac{\lambda_1+\lambda_n}{\lambda_1-\lambda_n}
+\end{Equation}
+
+只要逐次应用不等式，就可以得到收敛条件了。
+
+\subsection{精确线搜索的收敛性}
+
+然而，通常不可能事先确定特征值。更实际的方案是精确线搜索（Exact Line Search），它的思想非常简单，每一次迭代的步长$\eta_t$取决于什么样的$\eta_t$可以让$f(\vb{x}_t-\eta_t\grad f(\vb{x}_t))$下降最多？
+
+\begin{BoxDefinition}[精确线搜索]
+    精确线搜索是一种确定步长的方法
+    \begin{Equation}[精确线搜索]
+        \eta_t=\arg\min_{\eta\geq 0}f(\vb{x}_t-\eta\grad f(\vb{x}_t))
+    \end{Equation}
+\end{BoxDefinition}
+
+在二次问题下，精确线搜索的步长和收敛可以被表示为
+
+\begin{BoxProperty}[二次问题在精确线搜索下的步长]
+    二次问题，应用精确线搜索，应取步长为
+    \begin{Equation}[二次问题在固定步长下的步长]
+        \eta_t=\frac{\vb{g}_t^T\vb{g}_t}{\vb{g}_t^T\vb{Q}\vb{g}_t}
+    \end{Equation}
+    其中$\vb{g}_t=\grad f(\vb{x}_t)=\vb{Q}(\vb{x}_t-\vb{x}^{*})$。
+\end{BoxProperty}
+
+\begin{BoxProperty}[二次问题在精确线搜索下的收敛]
+    二次问题，应用精确线搜索，满足以下收敛性质
+    \begin{Equation}[二次问题在精确线搜索下的收敛]
+        f(\vb{x}_t)-f(\vb{x}^{*})\leq\qty(\frac{\lambda_1-\lambda_n}{\lambda_1+\lambda_n})^{2t}(f(\vb{x}_0-f\vb{x}^{*}))
+    \end{Equation}
+\end{BoxProperty}
+
+有些情况下，收敛性会用$f(\vb{x}_t)$和$f(\vb{x}^{*})$而不是$\vb{x}_t$和$\vb{x}^{*}$的接近程度来表征。
+
+
+
+
+
+
+

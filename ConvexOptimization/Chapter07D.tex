@@ -1,0 +1,53 @@
+\section{强凸和光滑的问题}
+
+光滑强凸的问题，具有和二次问题类似的固定步长解，但$\lambda_1,\lambda_n$被$\mu,L$取代了。
+
+\begin{BoxProperty}[光滑强凸问题的固定步长的梯度下降]
+    若$f$是$\mu$强凸且$L$光滑的，令步长为
+    \begin{Equation}[强凸光滑问题的固定步长的梯度下降步长]
+        \eta_t=\frac{2}{\mu+L}
+    \end{Equation}
+    则满足收敛特性
+    \begin{Equation}[强凸光滑问题的固定步长的梯度下降收敛1]
+        \norm{\vb{x}_t-\vb{x}^{*}}_2\leq\qty(\frac{\kappa-1}{\kappa+1})^t\norm{\vb{x}_0-\vb{x}^{*}}_2
+    \end{Equation}
+    这也等价于
+    \begin{Equation}[强凸光滑问题的固定步长的梯度下降收敛2]
+         f(\vb{x}_t)-f(\vb{x}^{*})\leq\frac{L}{2}\qty(\frac{\kappa-1}{\kappa+1})^{2t}\norm{\vb{x}_0-\vb{x}^{*}}_2^2
+    \end{Equation}
+    其中$\kappa=\mu/L$是条件数。
+\end{BoxProperty}
+
+而对于一般的问题，我们无法像二次问题那样进行精确线搜索，更符合实际的是近似的回溯线搜索（Backtracking Line Search），它不追求在当且梯度方向下降最多，而只要足够多就好。
+
+\begin{BoxProperty}[光滑强凸问题的回溯线搜索的梯度下降]
+    若$f$是$\mu$强凸且$L$光滑的，回溯线搜索对步长进行以下初始化和迭代
+    \begin{Equation}[强凸光滑问题的回溯线搜索的梯度下降步长1]
+        \eta_t=1\qquad
+        \eta_t=\beta\eta_t
+    \end{Equation}
+    直到步长满足
+    \begin{Equation}[强凸光滑问题的回溯线搜索的梯度下降步长2]
+        f(\vb{x}_t-\eta_t\grad f(\vb{x}_t))>f(\vb{x}^t)-\alpha\eta_t\norm{\grad f(\vb{x}_t)}_2^2
+    \end{Equation}
+    则满足收敛特性
+    \begin{Equation}[强凸光滑问题的回溯线搜索的梯度下降收敛]
+        f(\vb{x}_t)-f(\vb{x}^{*})\leq\qty(1-\min\qty{2\mu\alpha,\frac{2\beta\alpha\mu}{L}})^t(f(\vb{x}_{0})-f(\vb{x}^{*}))
+    \end{Equation}
+\end{BoxProperty}
+
+在回溯线搜索中，$\alpha$决定了要下降多少才算足够好，$\beta$决定了步长的缩小速度。
+
+若退一步，移除$f$是$\mu$强凸的条件，假设$f$仅仅是凸且$L$光滑的，收敛速度相对会慢很多。
+
+\begin{BoxProperty}[光滑凸问题的固定步长的梯度下降]
+    若$f$是凸且$L$光滑的，令步长为
+    \begin{Equation}[光滑凸问题的固定步长的梯度下降步长]
+        \eta=\frac{1}{L}
+    \end{Equation}
+    则满足收敛特性
+    \begin{Equation}[光滑凸问题的固定步长的梯度下降收敛]
+        f(\vb{x}_t)-f(\vb{x}^{*})\leq\frac{2L}{t}\norm{\vb{x}_0-\vb{x}^{*}}_2^2
+    \end{Equation}
+\end{BoxProperty}
+
