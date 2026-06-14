@@ -92,7 +92,7 @@
 \begin{BoxProperty}[二次问题在精确线搜索下的步长]
     二次问题，应用精确线搜索，应取步长为
     \begin{Equation}[二次问题在固定步长下的步长]
-        \eta_t=\frac{\vb{g}_t^T\vb{g}_t}{\vb{g}_T^T\vb{Q}\vb{g}_t}
+        \eta_t=\frac{\vb{g}_t^T\vb{g}_t}{\vb{g}_t^T\vb{Q}\vb{g}_t}
     \end{Equation}
     其中$\vb{g}_t=\grad f(\vb{x}_t)=\vb{Q}(\vb{x}_t-\vb{x}^{*})$。
 \end{BoxProperty}
@@ -105,6 +105,8 @@
 \end{BoxProperty}
 
 有些情况下，收敛性会用$f(\vb{x}_t)$和$f(\vb{x}^{*})$而不是$\vb{x}_t$和$\vb{x}^{*}$的接近程度来表征。
+
+
 
 
 
