@@ -1,4 +1,18 @@
 \chapter{约束问题的梯度下降}
 
+在这一节，我们将讨论约束问题的迭代求解
+
+\begin{BoxDefinition}[约束问题]
+    约束问题（Constrained Problem）是指
+    \begin{Equation}[约束问题]
+        \begin{array}{ll}
+            \minimize_{\vb{x}}&f(\vb{x})\\
+            \subto&\vb{x}\in\mathcal{C}
+        \end{array}
+    \end{Equation}
+\end{BoxDefinition}
+
+约束问题引入两种变种的梯度下降迭代方法：条件梯度法、投影梯度法。
+
 \input{Chapter08A.tex}
 \input{Chapter08B.tex}

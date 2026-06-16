@@ -1,1 +1,50 @@
 \section{投影梯度法}
+
+\begin{BoxDefinition}[投影梯度法]
+    投影梯度法（Projected Gradient）是指以下迭代，其中$\mathcal{P}_{\mathcal{C}}(\vb{x})=\arg\min_{\vb{z}\in\mathcal{C}}\norm{\vb{x}-\vb{z}}_2^2$
+    \begin{Equation}[投影梯度法]
+        \vb{x}_{t+1}=\mathcal{P}_{\mathcal{C}}(\vb{x}_t-\eta_t\grad f(\vb{x}_t))
+    \end{Equation}
+\end{BoxDefinition}
+
+投影梯度法的思想非常简单：先做梯度下降，随后将目标位置投影回$\mathcal{C}$的范围内。
+
+投影梯度法适用于对$\mathcal{C}$的投影可以被高效计算的场景。
+
+\begin{BoxProperty}[光滑强凸问题的投影梯度法1]
+    若$f$是$\mu$强凸且$L$光滑的，且$\vb{x}^{*}\in\relint(\mathcal{C})$，令步长为
+    \begin{Equation}[光滑强凸问题的投影梯度法1步长]
+        \eta_t=\frac{2}{\mu+L}
+    \end{Equation}
+    则满足以下收敛特性
+    \begin{Equation}[光滑强凸问题的投影梯度法1收敛]
+        \norm{\vb{x}^t-\vb{x}^{*}}_2\leq\qty(\frac{\kappa-1}{\kappa+1})^t\norm{\vb{x}_0-\vb{x}^{*}}_2
+    \end{Equation}
+    其中$\kappa=\mu/L$是条件数。
+\end{BoxProperty}
+
+若移除最优点$\vb{x}^{*}$必须位于$\mathcal{C}$内部的性质，则有稍弱的结论。
+
+\begin{BoxProperty}[光滑强凸问题的投影梯度法2]
+    若$f$是$\mu$强凸且$L$光滑的，令步长为
+    \begin{Equation}[光滑强凸问题的投影梯度法2步长]
+        \eta_t=\frac{1}{L}
+    \end{Equation}
+    则满足以下收敛特性
+    \begin{Equation}[光滑强凸问题的投影梯度法2收敛]
+        \norm{\vb{x}^t-\vb{x}^{*}}_2\leq\qty(1-\frac{\mu}{L})^t\norm{\vb{x}_0-\vb{x}^{*}}_2
+    \end{Equation}
+\end{BoxProperty}
+
+投影梯度法具有和无约束的梯度下降相似的迭代效率。
+
+\begin{BoxProperty}[光滑凸问题的投影梯度法]
+    若$f$是凸且$L$光滑的，令步长为
+    \begin{Equation}[光滑强凸问题的投影梯度法2步长]
+        \eta_t=\frac{1}{L}
+    \end{Equation}
+    则满足以下收敛特性
+    \begin{Equation}[光滑强凸问题的投影梯度法2收敛]
+        f(\vb{x}_t)-f(\vb{x}^{*})=\frac{3L}{t+1}(\norm{\vb{x}_0-\vb{x}^{*}}_2^2+f(\vb{x}_0)-f(\vb{x}^{*}))
+    \end{Equation}
+\end{BoxProperty}
