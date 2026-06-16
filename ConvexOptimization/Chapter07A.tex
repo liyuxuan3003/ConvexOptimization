@@ -1,0 +1,30 @@
+\section{梯度下降算法}
+
+我们从一个初始点$\vb{x}_0$开始，构造一个序列$\qty{\vb{x}_t}$，并满足
+\begin{Equation}[梯度下降1]
+    \vb{x}_{t+1}=\vb{x}_t+\eta_t\vb{d}_t
+\end{Equation}
+
+我们希望函数随着该序列递减
+\begin{Equation}[梯度下降2]
+    f(\vb{x}_{t+1})<f(\vb{x})
+\end{Equation}
+
+我们称$\vb{d}$是一个下降方向，如果该方向的方向导数为负
+\begin{Equation}[梯度下降3]
+    \grad f(\vb{x}_t)^T\vb{d}_t<0
+\end{Equation}
+
+现在的问题是，方向$\vb{d}_t$该怎么选取呢？梯度下降的含义是，就令$\vb{d}_t=-\grad f(\vb{x}_t)$为负梯度！
+
+\begin{BoxDefinition}[梯度下降]
+    梯度下降（Gradient Descent, GD）是指以下迭代
+    \begin{Equation}[梯度下降]
+        \vb{x}_{t+1}=\vb{x}_t-\eta_t\grad f(\vb{x}_t)
+    \end{Equation}
+\end{BoxDefinition}
+
+当迭代算法确定了，剩下的问题就是：迭代步长$\eta_t$应该怎么取以及能保证何种收敛速度？
+
+
+

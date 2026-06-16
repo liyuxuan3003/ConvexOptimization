@@ -58,7 +58,7 @@
 \begin{BoxDefinition}[凸包]
     定义集合$C\subseteq\R^n$的凸包（Convex Hull）为
     \begin{Equation}[凸包]
-        \aff C=\qty{\theta_1\vb{x}_1+\cdots+\theta_k\vb{x}_k\mid \vb{x}_i\in C,\ \theta_1+\cdots+\theta_k=1,\ \theta_i\geq 0}        
+        \conv C=\qty{\theta_1\vb{x}_1+\cdots+\theta_k\vb{x}_k\mid \vb{x}_i\in C,\ \theta_1+\cdots+\theta_k=1,\ \theta_i\geq 0}        
     \end{Equation}
 \end{BoxDefinition}
 
@@ -70,7 +70,7 @@
 
 \begin{BoxDefinition}[锥]
     若集合$C\subseteq\R^n$满足对于任意$\vb{x}\in C$，满足
-    \begin{Equation}[凸集]
+    \begin{Equation}[锥]
         \theta \vb{x}\in C\qquad \theta\geq 0
     \end{Equation}
     则称$C$是一个锥（Cone）。
@@ -80,7 +80,7 @@
 
 \begin{BoxDefinition}[凸锥]
     若集合$C\subseteq\R^n$满足对于任意$\vb{x}_1,\vb{x}_2\in C$，满足
-    \begin{Equation}[凸集]
+    \begin{Equation}[凸锥]
         \theta_1\vb{x}_1+\theta_2\vb{x}_2\in C\qquad \theta_1,\theta_2\geq 0
     \end{Equation}
     则称$C$是一个凸锥（Convex Cone）。
@@ -100,7 +100,7 @@
 \begin{BoxDefinition}[锥包]
     定义集合$C\subseteq\R^n$的锥包（Conic Hull）为
     \begin{Equation}[锥包]
-        \aff C=\qty{\theta_1\vb{x}_1+\cdots+\theta_k\vb{x}_k\mid \vb{x}_i\in C,\ \theta_i\geq 0}        
+        \cone C=\qty{\theta_1\vb{x}_1+\cdots+\theta_k\vb{x}_k\mid \vb{x}_i\in C,\ \theta_i\geq 0}        
     \end{Equation}
 \end{BoxDefinition}
 

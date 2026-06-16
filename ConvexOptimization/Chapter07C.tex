@@ -1,0 +1,79 @@
+\section{强凸和光滑的定义}
+
+在这一节，我们将系统阐述两个重要的概念：强凸（Strong Convex）和光滑（Smmoth）。
+
+\begin{BoxDefinition}[强凸]
+    定义$f(\cdot)$是$\mu$强凸，若其对任意$\vb{x},\vb{y}$满足
+    \begin{Equation}[强凸]
+        f(\vb{y})\geq f(\vb{x})+\grad f(\vb{x})^T(\vb{y}-\vb{x})+\frac{\mu}{2}\norm{\vb{y}-\vb{x}}_2^2
+    \end{Equation}
+\end{BoxDefinition}
+
+\begin{BoxDefinition}[光滑]
+    定义$f(\cdot)$是$L$光滑，若其对任意$\vb{x},\vb{y}$满足
+    \begin{Equation}[光滑]
+        f(\vb{y})\leq f(\vb{x})+\grad f(\vb{x})^T(\vb{y}-\vb{x})+\frac{L}{2}\norm{\vb{y}-\vb{x}}_2^2
+    \end{Equation}
+\end{BoxDefinition}
+
+根据\cref{thm:凸函数的一阶条件}，我们知道凸的等价一阶条件是
+\begin{Equation}[凸函数的一阶条件对比]
+    f(\vb{y})\geq f(\vb{x})+\grad f(\vb{x})^T(\vb{y}-\vb{x})
+\end{Equation}
+
+由此可见，强凸和光滑都是和凸相关的约束
+\begin{itemize}
+    \item 强凸是一个下限条件，它规定函数不能低于凸函数约束上方$(\mu\hspace{1.2pt}/2)\norm{\vb{y}-\vb{x}}_2^2$的位置。
+    \item 光滑是一个上限条件，它规定函数不能高于凸函数约束上方$(L/2)\norm{\vb{y}-\vb{x}}_2^2$的位置。
+\end{itemize}
+
+因此，强凸是比凸更严格的要求，光滑则是一个和凸的概念相反的限制。
+
+\begin{BoxProperty}[强凸的Jesen不等式]
+    强凸等价于以下Jesen不等式
+    \begin{Equation}[强凸的Jesen不等式]
+        f(\lambda\vb{x}+(1-\lambda)\vb{y})\leq\lambda f(\vb{x})+(1-\lambda)f(\vb{y})-\frac{\mu}{2}(1-\lambda)\norm{\vb{x}-\vb{y}}_2^2
+    \end{Equation}
+\end{BoxProperty}
+
+\begin{BoxProperty}[强凸的内积条件]
+    强凸等价于以下内积条件
+    \begin{Equation}[强凸的内积条件]
+        \<\grad f(\vb{x})-\grad f(\vb{y}),\vb{x}-\vb{y}>\geq\mu\norm{\vb{x}-\vb{y}}_2^2
+    \end{Equation}
+\end{BoxProperty}
+
+\begin{BoxProperty}[强凸的二阶条件]
+    强凸等价于以下二阶条件
+    \begin{Equation}[强凸的二阶条件]
+        \laplacian f(\vb{x})\geq\mu\vb{I}
+    \end{Equation}
+\end{BoxProperty}
+
+\begin{BoxProperty}[光滑的Jesen不等式]
+    光滑等价于以下Jesen不等式
+    \begin{Equation}[光滑的Jesen不等式]
+        f(\lambda\vb{x}+(1-\lambda)\vb{y})\geq\lambda f(\vb{x})+(1-\lambda)f(\vb{y})-\frac{L}{2}(1-\lambda)\norm{\vb{x}-\vb{y}}_2^2
+    \end{Equation}
+\end{BoxProperty}
+
+\begin{BoxProperty}[光滑的Lipschitz梯度]
+    光滑等价于以下Lipschitz梯度
+    \begin{Equation}[光滑的Lipschitz梯度]
+        \norm{\grad f(\vb{x})-\grad f(\vb{y})}_2\leq L\norm{\vb{x}-\vb{y}}_2
+    \end{Equation}
+\end{BoxProperty}
+
+\begin{BoxProperty}[光滑的内积条件]
+    光滑等价于以下内积条件
+    \begin{Equation}[强凸的内积条件]
+        \<\grad f(\vb{x})-\grad f(\vb{y}),\vb{x}-\vb{y}>\geq L^{-1}\norm{\vb{x}-\vb{y}}_2^2
+    \end{Equation}
+\end{BoxProperty}
+
+\begin{BoxProperty}[光滑的二阶条件]
+    光滑等价于以下二阶条件
+    \begin{Equation}[强凸的二阶条件]
+        \laplacian f(\vb{x})\leq L\vb{I}
+    \end{Equation}
+\end{BoxProperty}
