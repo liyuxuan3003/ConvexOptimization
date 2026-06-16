@@ -1,0 +1,26 @@
+\section{条件梯度法}
+
+\begin{BoxDefinition}[条件梯度法]
+    条件梯度法（Conditional Gradient）是指以下迭代，也被称为Frank-Wolfe算法
+    \begin{Equation}[条件梯度法]
+        \vb{x}_{t+1}=(1-\eta_t)\vb{x}_t+\eta_t\arg\min_{\vb{x}\in\mathcal{C}}\<\grad f(\vb{x}_t),\vb{x}>
+    \end{Equation}
+\end{BoxDefinition}
+
+在有约束$\mathcal{C}$的情况下，沿负梯度方向虽然下降最快，但是可能很快触及$\mathcal{C}$的边界。条件梯度法的思想就是，要在“下降快”和“走的远”之间取得一个平衡，在数学上，这可以通过最小化$\grad f(\vb{x}_t)$和$\vb{x}-\vb{x}_t$的内积来实现，由于常数不影响优化，可以用$\arg\min_{\vb{x}\in\mathcal{C}}\<\grad f(\vb{x}_t),\vb{x}>$来找到位于$\mathcal{C}$边界上最优的$\vb{x}$，最后用$(1-\eta_t)\vb{x}_t+\eta_t\vb{x}$往该方向上走一点，实现一次迭代。
+
+条件梯度法的每次迭代是一个线性优化，因此适用于线性优化开销很低的场景。
+
+\begin{BoxFormula}[光滑强凸问题的条件梯度法]
+    若$f$是凸且$L$光滑的，令步长为
+    \begin{Equation}[光滑强凸问题的条件梯度法步长]
+        \eta_t=\frac{2}{t+2}
+    \end{Equation}
+    则满足以下收敛特性
+    \begin{Equation}[光滑强凸问题的条件梯度法收敛]
+        f(\vb{x}_t)-f(\vb{x}^{*})\leq\frac{2Ld_{\mathcal{C}}^2}{t+2}
+    \end{Equation}
+    其中$d_{\mathcal{C}}=\sup_{\vb{x},\vb{y}}\norm{\vb{x}-\vb{y}}_2$反映$\mathcal{C}$的最大直径。
+\end{BoxFormula}
+
+条件梯度法下，即便将条件从凸转变为强凸，也无法进一步提高算法的效率。
